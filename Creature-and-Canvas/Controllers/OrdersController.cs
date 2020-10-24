@@ -33,7 +33,7 @@ namespace Creature_and_Canvas.Controllers
         {
             var order = _repo.GetOrderById(id);
 
-            if (order == null) return NotFound("No payment with that Id was found");
+            if (order == null) return NotFound("No order with that Id was found");
 
             return Ok(order);
         }
