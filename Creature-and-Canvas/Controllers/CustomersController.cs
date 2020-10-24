@@ -37,5 +37,18 @@ namespace Creature_and_Canvas.Controllers
 
             return Ok(customer);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCustomer(int id)
+        {
+            if (_repo.GetCustomerById(id) == null)
+            {
+                return NotFound();
+            }
+
+            _repo.Remove(id);
+
+            return Ok();
+        }
     }
 }

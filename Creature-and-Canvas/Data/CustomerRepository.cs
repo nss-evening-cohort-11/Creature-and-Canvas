@@ -18,7 +18,9 @@ namespace Creature_and_Canvas.Data
         {
             using var db = new SqlConnection(_connectionString);
 
-            var customers = db.Query<Customer>("select * from Customers");
+            var customers = db.Query<Customer>(@"select *
+                                                from Customers
+                                                where IsDeleted = 0");
 
             return customers.ToList();
         }
@@ -36,6 +38,17 @@ namespace Creature_and_Canvas.Data
             var customer = db.QueryFirstOrDefault<Customer>(query, parameters);
 
             return customer;
+        }
+
+        public void Remove(int customerId)
+        {
+            var sql = @"Update Customers
+                       Set IsDeleted = 1
+                       WHERE CustomerID = @cuid";
+
+            using var db = new SqlConnection(_connectionString);
+
+            db.Execute(sql, new { cuid = customerId });
         }
     }
 }
