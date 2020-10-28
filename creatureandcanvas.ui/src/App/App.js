@@ -1,11 +1,10 @@
 import '../App/App.scss';
+import Products from '../components/pages/Products/Products.js';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+      <Products/>
     </div>
   );
 }
