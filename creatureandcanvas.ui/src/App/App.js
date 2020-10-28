@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import './App.scss';
 
+import OurNavbar from '../components/shared/OurNavbar/OurNavbar';
 import Home from '../components/pages/Home/Home';
 import Animals from '../components/pages/Animals/Animals';
 import SingleAnimal from '../components/shared/SingleAnimal/SingleAnimal';
@@ -25,7 +26,8 @@ class App extends React.Component {
       <div className='App'>
         <BrowserRouter>
           <React.Fragment>
-            <div className='container'>
+            <OurNavbar authed={authed}/>
+            <div className='container d-flex justify-content-center'>
               <div className='row'>
                 <Switch>
                   <PublicRoute path='/home' exact component={Home} authed={authed}/>
