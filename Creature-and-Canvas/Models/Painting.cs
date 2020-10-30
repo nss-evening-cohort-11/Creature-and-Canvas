@@ -11,5 +11,6 @@ namespace Creature_and_Canvas.Models
         public string PaintingDescription { get; set; }
         public int ProductTypeID { get; set; }
         public string ImageURL { get; set; }
+        public string Title { get; set; }
     }
 }

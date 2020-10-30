@@ -38,5 +38,17 @@ namespace Creature_and_Canvas.Data
             return painting;
         }
 
+        //public List<Painting> GetLatest20Paintings()
+        //{
+        //    using var db = new SqlConnection(_connectionString);
+
+        //    var paintings = db.Query<Painting>(@"select *
+        //                                         from Paintings
+        //                                         where ItemID > ((select count(*) from Paintings) - 20)
+        //                                         order by ItemID desc)");
+            
+        //    return paintings.ToList();
+        //}
+
     }
 }

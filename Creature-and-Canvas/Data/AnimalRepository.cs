@@ -22,5 +22,20 @@ namespace Creature_and_Canvas.Data
 
             return animals.ToList();
         }
+
+        public Animal GetAnimalById(int animalId)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var query = @"select *
+                          from Animals
+                          where AnimalID = @aid";
+
+            var parameters = new { aid = animalId };
+
+            var animal = db.QueryFirstOrDefault<Animal>(query, parameters);
+
+            return animal;
+        }
     }
 }
