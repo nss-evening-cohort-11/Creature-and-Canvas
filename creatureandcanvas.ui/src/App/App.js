@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import './App.scss';
 
 import OurNavbar from '../components/shared/OurNavbar/OurNavbar';
+import Shop from '../components/pages/Shop/Shop';
 import Home from '../components/pages/Home/Home';
 import Animals from '../components/pages/Animals/Animals';
 import SingleAnimal from '../components/shared/SingleAnimal/SingleAnimal';
@@ -30,11 +31,12 @@ class App extends React.Component {
             <div className='container d-flex justify-content-center'>
               <div className='row'>
                 <Switch>
+                  <PublicRoute path='/shop' exact component={Shop} authed={authed}/>
                   <PublicRoute path='/home' exact component={Home} authed={authed}/>
                   <PublicRoute path='/animals' exact component={Animals} authed={authed}/>
                   <PublicRoute path='/animals/12345' exact component={SingleAnimal} authed={authed}/>
                   <PublicRoute path='/paintings' exact component={Paintings} authed={authed}/>
-                  <Redirect from='*' to='/home' />
+                  <Redirect from='*' to='/shop' />
                 </Switch>
               </div>
             </div>
