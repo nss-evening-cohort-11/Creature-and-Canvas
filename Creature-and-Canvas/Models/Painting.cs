@@ -4,7 +4,7 @@ namespace Creature_and_Canvas.Models
 {
     public class Painting
     {
-        public int PaintingID { get; set; }
+        public int ItemID { get; set; }
         public int Price { get; set; }
         public string CanvasSize { get; set; }
         public int AnimalId { get; set; }
