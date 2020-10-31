@@ -29,7 +29,7 @@ namespace Creature_and_Canvas.Data
 
             var query = @"select *
                           from Paintings
-                          where Title like '%" + keyword + "%'";
+                          where Title like '%' + @kwd + '%'";
 
             var parameters = new { kwd = keyword };
 
