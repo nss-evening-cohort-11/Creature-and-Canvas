@@ -45,7 +45,7 @@ namespace Creature_and_Canvas.Data
             var paintings = db.Query<Painting>(@"select *
                                                  from Paintings
                                                  where ItemID > ((select count(*) from Paintings) - 20)
-                                                 order by ItemID desc)");
+                                                 order by ItemID desc");
 
             return paintings.ToList();
         }
