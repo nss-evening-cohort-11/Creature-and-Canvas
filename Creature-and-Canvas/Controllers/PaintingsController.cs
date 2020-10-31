@@ -37,12 +37,12 @@ namespace Creature_and_Canvas.Controllers
             return Ok(painting);
         }
 
-        //[HttpGet]
-        //public IActionResult GetTwentyPaintings()
-        //{
-        //    var latestPaintings = _repo.GetLatest20Paintings();
+        [HttpGet("getLatest20Paintings")]
+        public IActionResult GetTwentyPaintings()
+        {
+            var latestPaintings = _repo.GetLatest20Paintings();
 
-        //    return Ok(latestPaintings);
-        //}
+            return Ok(latestPaintings);
+        }
     }
 }
