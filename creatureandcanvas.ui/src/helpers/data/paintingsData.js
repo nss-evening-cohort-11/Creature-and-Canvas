@@ -4,8 +4,14 @@ import {baseUrl} from "../constants.json"
 
 const getAllPaintings = () => new Promise((resolve,reject) => {
     axios.get(`${baseUrl}/paintings/getLatest20Paintings`)
-        .then(response => resolve(response.data))
+        .then(response => resolve(console.log(response.data)))
         .catch(error => reject(error));
 });
 
-export default {getAllPaintings};
+const getSinglePainting = (itemId) => new Promise((resolve, reject) => {
+    axios.get(`${baseUrl}/paintings/${itemId}`)
+        .then(response => resolve(response.data))
+        .catch(err => reject(err));
+})
+
+export default {getAllPaintings, getSinglePainting};
