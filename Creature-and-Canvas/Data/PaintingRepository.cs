@@ -45,8 +45,13 @@ namespace Creature_and_Canvas.Data
             var paintings = db.Query<Painting>(@"select *
                                                  from Paintings
                                                  where ItemID > ((select count(*) from Paintings) - 20)
+<<<<<<< HEAD
                                                  order by ItemID desc");
             
+=======
+                                                 order by ItemID desc)");
+
+>>>>>>> 871f3510171e51e40ef52c3fae4463e2dd07bb35
             return paintings.ToList();
         }
 

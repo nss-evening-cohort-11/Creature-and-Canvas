@@ -37,6 +37,7 @@ namespace Creature_and_Canvas.Controllers
             return Ok(painting);
         }
 
+
         [HttpGet("getLatest20Paintings")]
         public IActionResult GetTwentyPaintings()
         {
