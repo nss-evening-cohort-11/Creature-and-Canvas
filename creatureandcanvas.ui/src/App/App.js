@@ -9,7 +9,7 @@ import Home from '../components/pages/Home/Home';
 import Animals from '../components/pages/Animals/Animals';
 import SingleAnimal from '../components/shared/SingleAnimal/SingleAnimal';
 import Paintings from '../components/pages/Paintings/Paintings';
-
+import OurFooter from '../components/shared/OurFooter/OurFooter';
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === true
@@ -40,6 +40,7 @@ class App extends React.Component {
                 </Switch>
               </div>
             </div>
+            <OurFooter authed={authed}/>
           </React.Fragment>
         </BrowserRouter>
       </div>
