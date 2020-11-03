@@ -8,4 +8,10 @@ const getAllPaintings = () => new Promise((resolve,reject) => {
         .catch(error => reject(error));
 });
 
-export default {getAllPaintings};
+const getPaintingsByKeyword = (keyword) => new Promise((resolve,reject) => {
+    axios.get(`${baseUrl}/paintings/search/${keyword}`)
+        .then(response => resolve(response.data))
+        .catch(error => reject(error));
+});
+
+export default {getAllPaintings, getPaintingsByKeyword};
