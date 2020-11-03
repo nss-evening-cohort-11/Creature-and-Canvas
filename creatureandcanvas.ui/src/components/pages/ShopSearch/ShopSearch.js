@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom';
 
 class ShopSearch extends React.Component {
 state = {
-  searchKeyword: '',
+  searchValue: '',
 }
 
 componentDidMount() {
-  const { keyword } = this.props.match.params;
+  console.log('here?: ', this.props.match.params)
 }
 
   render() {
     return (
       <div className="ShopSearch mt-3">
-        <h1 className="Search mb-5">ShopSearch</h1>
-        <h4></h4>
+        <h1 className="Search mb-5">Search Results</h1>
+        <h4>test search</h4>
       </div>
     );
   }
