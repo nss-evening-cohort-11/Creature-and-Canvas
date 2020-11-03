@@ -20,7 +20,7 @@ class SinglePainting extends React.Component {
                   <p>Size: {painting.canvasSize}</p>
                   <p>Price: ${painting.price}</p>
                   <div className="btnContainer text-center">
-                  <Link className="btn btn-secondary" to={singleLink} onClick={() => console.log(painting.itemID)}>Buy Immediately</Link>
+                  <Link className="btn btn-secondary" to={singleLink}>Buy Immediately</Link>
                   </div>
                 </div>
             </div>

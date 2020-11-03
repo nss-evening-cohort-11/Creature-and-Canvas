@@ -11,19 +11,18 @@ class Paintings extends React.Component {
 
   componentDidMount() {
     const { itemId } = this.props.match.params;
+    console.log(itemId)
     paintingData.getSinglePainting(itemId)
-      .then(response => this.setState({painting: response.data}))
+      .then(response => this.setState({painting: response}))
       .catch(err => console.log(err))
   }
 
   render() {
     const { painting } = this.state;
-    const what = () => console.log(painting.itemId)
     return (
       <div className="SinglePaintingView">
       <div className="card mb-3">
         <div className="card-body">
-          {what()}
           <h5 className="card-title">{painting.Title}</h5>
           <p className="card-text">{painting.paintingDescription}</p>
           <img src={painting.imageURL} alt="" className="card-img-bottom"/>
