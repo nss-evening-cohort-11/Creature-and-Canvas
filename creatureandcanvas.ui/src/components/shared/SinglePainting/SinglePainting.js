@@ -6,7 +6,7 @@ import paintingsData from '../../../helpers/data/paintingsData';
 class SinglePainting extends React.Component {
   render() {
     const { painting } = this.props;
-    const singleLink = `/paintings/${painting.itemID}`
+    const singleLink = `paintings/${painting.itemID}`
     return (
       <div className="SinglePainting">
         <div className="row my-4">
@@ -20,7 +20,7 @@ class SinglePainting extends React.Component {
                   <p>Size: {painting.canvasSize}</p>
                   <p>Price: ${painting.price}</p>
                   <div className="btnContainer text-center">
-                  <Link className="btn btn-secondary" to={singleLink}>Buy Immediately</Link>
+                  <Link className="btn btn-secondary" to={singleLink} onClick={() => console.log(painting.itemID)}>Buy Immediately</Link>
                   </div>
                 </div>
             </div>

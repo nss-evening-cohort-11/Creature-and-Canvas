@@ -18,11 +18,13 @@ class Paintings extends React.Component {
 
   render() {
     const { painting } = this.state;
+    const what = () => console.log(painting.itemId)
     return (
       <div className="SinglePaintingView">
       <div className="card mb-3">
         <div className="card-body">
-          <h5 className="card-title">{paintingData.Title}</h5>
+          {what()}
+          <h5 className="card-title">{painting.Title}</h5>
           <p className="card-text">{painting.paintingDescription}</p>
           <img src={painting.imageURL} alt="" className="card-img-bottom"/>
         </div>
