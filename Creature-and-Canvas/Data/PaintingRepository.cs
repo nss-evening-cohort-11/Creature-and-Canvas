@@ -46,7 +46,7 @@ namespace Creature_and_Canvas.Data
                                                  from Paintings
                                                  where ItemID > ((select count(*) from Paintings) - 20)
                                                  order by ItemID desc");
-
+            
             return paintings.ToList();
         }
 
@@ -64,6 +64,5 @@ namespace Creature_and_Canvas.Data
 
             return painting;
         }
-
     }
 }
