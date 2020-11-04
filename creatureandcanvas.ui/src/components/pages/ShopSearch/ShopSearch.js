@@ -9,19 +9,28 @@ state = {
   newthing: {},  //working on setting state?
 }
 
+componentDidUpdate() {
+  const {keyword} = this.state.searchValue;
+  paintingsData.getPaintingsByKeyword(keyword)
+    .then((response) => this.setState({ newthing: response })) // not sure what to do with response?
+    .catch((err) => console.error('could not get paintings:', err));
+  console.log('search results:', this.state.newthing );
+}
+
 componentDidMount() {
   const {keyword} = this.state.searchValue;
   paintingsData.getPaintingsByKeyword(keyword)
     .then((response) => this.setState({ newthing: response })) // not sure what to do with response?
-    .catch((err) => console.error('could not get single memory:', err));
+    .catch((err) => console.error('could not get paintings:', err));
   console.log('search results:', this.state.newthing );
 }
 
   render() {
+    const { key } = this.state;
     return (
       <div className="ShopSearch mt-3">
         <h1 className="Search mb-5">Search Results</h1>
-        <h4>test search</h4>
+        <h4>{key}</h4>
       </div>
     );
   }

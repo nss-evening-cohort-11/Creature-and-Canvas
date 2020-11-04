@@ -46,12 +46,8 @@ class OurNavbar extends React.Component {
               </li>
             </ul>
           </div>
-          <form className="form-inline my-2 my-lg-0">
-            <input onChange={this.setSearchValue} className="form-control mr-sm-2" type="text" placeholder="Search Products" aria-label="Search"/>
-            <Link to={keywordLink} searchValue={this.state.searchValue} className="btn btn-outline-success my-2 my-sm-0">
-            Go
-            </Link>
-          </form>
+          //goes here
+
         </nav>
       </div>
     );
