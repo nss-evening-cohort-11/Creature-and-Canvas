@@ -8,4 +8,4 @@ const getAllPaintings = () => new Promise((resolve,reject) => {
         .catch(error => reject(error));
 });
 
-export default {getAllPaintings};
+export default { getAllPaintings };

@@ -37,10 +37,7 @@ namespace Creature_and_Canvas.Controllers
             return Ok(painting);
         }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d7e6df65183573fef2016d73a4012bb9b09ed192
         [HttpGet("getLatest20Paintings")]
         public IActionResult GetTwentyPaintings()
         {
@@ -48,5 +45,7 @@ namespace Creature_and_Canvas.Controllers
 
             return Ok(latestPaintings);
         }
+
+        
     }
 }

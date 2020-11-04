@@ -7,7 +7,7 @@ class OurNavbar extends React.Component {
     return (
       <div className='OurNavbar'>
         <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-          <Link className='navbar-brand' to='/shop'>
+          <Link className='navbar-brand' to='/home'>
             Creature & Canvas
           </Link>
           <button
@@ -31,6 +31,11 @@ class OurNavbar extends React.Component {
               <li className='nav-item'>
                 <Link className='nav-link' to='/animals'>
                   Animals
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/shop'>
+                  Shop
                 </Link>
               </li>
             </ul>
