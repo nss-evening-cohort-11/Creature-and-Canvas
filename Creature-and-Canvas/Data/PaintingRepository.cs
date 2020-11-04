@@ -47,10 +47,7 @@ namespace Creature_and_Canvas.Data
                                                  where ItemID > ((select count(*) from Paintings) - 20)
                                                  order by ItemID desc");
             
-<<<<<<< HEAD
             return paintings.ToList();
-=======
-          return paintings.ToList();
         }
 
         public Painting GetPaintingById(int itemId)
@@ -66,7 +63,6 @@ namespace Creature_and_Canvas.Data
             var painting = db.QueryFirstOrDefault<Painting>(query, parameters);
 
             return painting;
->>>>>>> master
         }
 
         
