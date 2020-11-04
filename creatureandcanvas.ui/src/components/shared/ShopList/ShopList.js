@@ -3,8 +3,7 @@ import './ShopList.scss';
 
 class ShopList extends React.Component {
   render() {
-    const { ...animal } = this.props;
-    console.log(this.props)
+    const{ animal } = this.props;
     return (
       <div className='ShopList justify-content-center'>
         <li className='list-group-item m-3'>
@@ -13,9 +12,9 @@ class ShopList extends React.Component {
             <p className='count mr-auto mt-1'>({animal.paintingsCount})</p>
           </div>
           <div className="text-left">
-            <h5>{animal.Title}</h5>
-            <h5>Painting Two</h5>
-            <h5>Painting Three</h5>
+            <h5>{animal.topThreePaintings[0].title}</h5>
+            <h5>{animal.topThreePaintings[1].title}</h5>
+            <h5>{animal.topThreePaintings[2].title}</h5>
           </div>
         </li>
       </div>

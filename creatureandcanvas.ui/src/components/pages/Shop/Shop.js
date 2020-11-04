@@ -9,51 +9,15 @@ class Shop extends React.Component {
     animals: [],
   };
 
-  // componentDidMount() {
-  //   animalsData.getAnimalNameAndNumberOfPaintings()
-  //   .then((animals) => {
-  //     this.setState({ animals });
-  //     animals.forEach(a => {
-  //       a.three = animalsData.getTopThreePaintings(a.animalId)
-  //       console.error(a)
-  //     });
-  //     Promise.all(animals)
-  //     .then((results) => {
-  //       results.forEach(r => {
-  //         console.error(r)
-  //       })
-
-  //     });
-  //   });
-  // }
-
-  // componentDidMount() {
-  //   let promise = animalsData.getAnimalNameAndNumberOfPaintings();
-  //   promise.then((animals) => {
-  //     this.setState(
-  //       {
-  //         animals: animals,
-  //       },
-  //       () => {
-  //         animals.forEach((a) => {
-  //           a.three = animalsData.getTopThreePaintings(a.animalId);
-  //         });
-  //         console.log(this.state.animals);
-  //       }
-  //     );
-  //   });
-  // }
-
   componentDidMount() {
     let promise = animalsData.getAnimalAndTopThreePaintings();
     promise.then((animals) => {
-      this.setState({ animals: animals });
+      this.setState({ animals });
     });
   }
 
   render() {
     const { animals } = this.state;
-    console.log(this.state.animals)
     const buildAnimalList = animals.map((animal) => {
       return <ShopList key={animal.animalId} animal={animal} />;
     });
