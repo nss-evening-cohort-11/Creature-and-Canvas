@@ -9,7 +9,6 @@ import Home from '../components/pages/Home/Home';
 import Animals from '../components/pages/Animals/Animals';
 import SingleAnimal from '../components/shared/SingleAnimal/SingleAnimal';
 import Paintings from '../components/pages/Paintings/Paintings';
-import SinglePaintings from '../components/shared/SinglePainting/SinglePainting';
 import OurFooter from '../components/shared/OurFooter/OurFooter';
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
