@@ -11,6 +11,6 @@ namespace Creature_and_Canvas.Models
         public int PaintingsCount { get; set; }
         public int AnimalId { get; set; }
 
-        public List<Painting> TopThreePaintings = new List<Painting>();
+        public List<Painting> TopThreePaintings { get; set; } = new List<Painting>();
     }
 }
