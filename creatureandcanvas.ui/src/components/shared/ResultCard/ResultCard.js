@@ -7,7 +7,7 @@ class ResultCard extends React.Component {
     const { painting } = this.props;
     const itemLink = `/paintings/${painting.itemID}`
     return (
-      <div className="ResultCard col-sm-4">
+      <div className="ResultCard col-12">
         <Link to={itemLink} className="card custom-card">
           <div className="card-body low-pad">
             <h5 className="card-title">{painting.title}</h5>

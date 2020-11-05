@@ -20,6 +20,12 @@ componentDidMount() {
   this.getPaintingsByKeyword();
 }
 
+componentDidUpdate(prevProps, prevState) {
+  if (prevState.foundPaintings !== this.state.foundPaintings) {
+    this.getPaintingsByKeyword();
+  }
+}
+
 
   render() {
     const { foundPaintings } = this.state;
@@ -27,7 +33,7 @@ componentDidMount() {
       <ResultCard key={painting.paintingId} painting={painting}/>
     ));
     return (
-      <div className="ShopSearch mt-3">
+      <div className="ShopSearch col-12 mt-3">
         <h1 className="Search mb-5">Search Results</h1>
         <div className="d-flex flex-wrap col-12">{buildResults}</div>
       </div>
