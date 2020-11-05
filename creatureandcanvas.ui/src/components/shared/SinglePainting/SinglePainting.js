@@ -2,6 +2,7 @@ import React from 'react';
 import './SinglePainting.scss';
 import {Link} from 'react-router-dom';
 
+
 class SinglePainting extends React.Component {
   render() {
     const { painting } = this.props;

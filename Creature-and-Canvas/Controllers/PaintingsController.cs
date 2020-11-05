@@ -45,6 +45,7 @@ namespace Creature_and_Canvas.Controllers
             return Ok(latestPaintings);
         }
 
+
         [HttpGet("{id}")]
         public IActionResult GetPaintingById(int id)
         {
