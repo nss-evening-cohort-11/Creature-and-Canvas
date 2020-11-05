@@ -46,8 +46,9 @@ namespace Creature_and_Canvas.Data
                                                  from Paintings
                                                  where ItemID > ((select count(*) from Paintings) - 20)
                                                  order by ItemID desc");
-            
-            return paintings.ToList();
+          
+          return paintings.ToList();
+
         }
 
         //public Painting GetPaintingById(int itemId)
@@ -69,10 +70,10 @@ namespace Creature_and_Canvas.Data
         {
             using var db = new SqlConnection(_connectionString);
 
-            var query = @"select Animals.AnimalName, *
-                          from Paintings
-                          join Animals
-                          on Animals.AnimalId = Paintings.AnimalId
+            var query = @"select A.AnimalName, P.ItemID, P.Price, P.CanvasSize, P.AnimalID, P.PaintingDescription, P.ProductTypeID, P.ImageURL, P.Title
+                          from Paintings P
+                          join Animals A
+                          on A.AnimalId = P.AnimalId
                           where ItemID = @Iid";
 
             var parameters = new { Iid = itemId };
@@ -81,9 +82,5 @@ namespace Creature_and_Canvas.Data
 
             return painting;
         }
-        
-
-
-
     }
 }
