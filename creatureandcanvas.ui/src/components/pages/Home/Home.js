@@ -24,7 +24,7 @@ class Home extends React.Component {
     return (
       <div className="Home">
         <div className="img-container d-flex flex-wrap text-center">
-          <img className="logo text-center rounded mx-auto" src="https://i.ibb.co/gwfF0Lx/CC-logo2.png"/>
+          <img className="logo text-center rounded mx-auto" src="https://i.ibb.co/gwfF0Lx/CC-logo2.png" alt=""/>
         </div>
         <h1>Welcome to Creature & Canvas</h1>
         <div className="blurb-container d-flex text-center">
