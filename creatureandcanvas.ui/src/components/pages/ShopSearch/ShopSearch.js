@@ -2,41 +2,34 @@ import React from 'react';
 import './ShopSearch.scss';
 import { Link } from 'react-router-dom';
 import paintingsData from '../../../helpers/data/paintingsData';
+import ResultCard from '../../shared/ResultCard/ResultCard';
 
 class ShopSearch extends React.Component {
 state = {
-  searchValue: this.props.match.params,
-  foundPainting: {},
+  foundPaintings: [],
 }
 
 getPaintingsByKeyword = () => {
-  const keyword = this.state.searchValue.keyword;
+  const keyword = this.props.match.params.keyword;
   paintingsData.getPaintingsByKeyword(keyword)
-    .then((response) => this.setState({ foundPainting: response }))
-    //sets foundPainting as object = good
-    .catch((err) => console.error('could not get single memory:', err));
+    .then((foundPaintings) => this.setState({ foundPaintings }))
+    .catch((err) => console.error('could not get paintings:', err));
 }
 
 componentDidMount() {
   this.getPaintingsByKeyword();
-  console.log('componentMount:', this.state.foundPainting );
-  // this consoles a blank object, even though i can see the foundPainting is not blank in state
-  // is this something about the order/speed of retrieval?
 }
 
-getTitle = () => {
-  const title = this.state.foundPainting.title;
-  console.log('inside getTitle:', title);
-  return title;
-}
 
   render() {
-    const { painting } = this.state;
+    const { foundPaintings } = this.state;
+    const buildResults = foundPaintings.map((painting) => (
+      <ResultCard key={painting.paintingId} painting={painting}/>
+    ));
     return (
       <div className="ShopSearch mt-3">
         <h1 className="Search mb-5">Search Results</h1>
-    <h4>h4 {this.getTitle()}</h4>
-    {/* <h3>h3 {painting.Title.foundPainting}</h3> */}
+        <div className="d-flex flex-wrap col-12">{buildResults}</div>
       </div>
     );
   }
