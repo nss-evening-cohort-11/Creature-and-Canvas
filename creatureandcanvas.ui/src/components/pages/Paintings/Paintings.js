@@ -25,6 +25,7 @@ class Paintings extends React.Component {
           <h5 className="card-title">{painting.title}</h5>
           <p className="card-text">{painting.paintingDescription}</p>
           <img src={painting.imageURL} alt="" className="card-img-bottom"/>
+          <h4 className="mt-4">{painting.animalName}</h4>
           <button className="btn btn-secondary" onClick={() => console.log("Id: " + painting.itemId)}>Buy Immediately</button>
         </div>
       </div>
