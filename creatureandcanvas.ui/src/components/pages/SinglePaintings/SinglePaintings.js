@@ -28,6 +28,7 @@ class SinglePaintings extends React.Component {
           <p className="card-text">Size: {painting.canvasSize}</p>
           <p className="card-text">{painting.paintingDescription}</p>
           <img src={painting.imageURL} alt="" className="card-img-bottom"/>
+          <h4 className="mt-4">{painting.animalName}</h4>
           <button className="btn btn-secondary" onClick={() => console.log("Id: " + painting.itemId)}>Buy Immediately</button>
         </div>
       </div>

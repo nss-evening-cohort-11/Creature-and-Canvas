@@ -1,8 +1,11 @@
-﻿using System.Net.NetworkInformation;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Creature_and_Canvas.Models
 {
-    public class Painting
+    public class AnimalPainting
     {
         public int ItemID { get; set; }
         public int Price { get; set; }
@@ -12,6 +15,7 @@ namespace Creature_and_Canvas.Models
         public int ProductTypeID { get; set; }
         public string ImageURL { get; set; }
         public string Title { get; set; }
-        
+        public string AnimalName { get; set; }
+       
     }
 }
