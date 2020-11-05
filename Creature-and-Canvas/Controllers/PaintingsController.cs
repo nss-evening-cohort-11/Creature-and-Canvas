@@ -37,12 +37,24 @@ namespace Creature_and_Canvas.Controllers
             return Ok(painting);
         }
 
+
         [HttpGet("getLatest20Paintings")]
         public IActionResult GetTwentyPaintings()
         {
             var latestPaintings = _repo.GetLatest20Paintings();
 
             return Ok(latestPaintings);
+        }
+
+
+        [HttpGet("{id}")]
+        public IActionResult GetPaintingById(int id)
+        {
+            var painting = _repo.GetPaintingById(id);
+
+            if (painting == null) return NotFound("No product with that Id was found");
+
+            return Ok(painting);
         }
     }
 }

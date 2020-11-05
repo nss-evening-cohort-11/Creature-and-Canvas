@@ -8,4 +8,22 @@ const getAllAnimals = () => new Promise((resolve,reject) => {
         .catch(error => reject(error));
 });
 
-export default {getAllAnimals};
+const getAnimalNameAndNumberOfPaintings = () => new Promise((resolve,reject) => {
+    axios.get(`${baseUrl}/animals/shopAnimals`)
+        .then(response => resolve(response.data))
+        .catch(error => reject(error));
+});
+
+const getTopThreePaintings =(animalId) => new Promise((resolve, reject) => {
+    axios.get(`${baseUrl}/animals/topThree/${animalId}`)
+        .then(response => resolve(response.data))
+        .catch(error => reject(error));
+});
+
+const getAnimalAndTopThreePaintings =() => new Promise((resolve, reject) => {
+    axios.get(`${baseUrl}/animals/topThree`)
+        .then(response => resolve(response.data))
+        .catch(error => reject(error));
+});
+
+export default { getAllAnimals, getAnimalNameAndNumberOfPaintings, getTopThreePaintings, getAnimalAndTopThreePaintings };

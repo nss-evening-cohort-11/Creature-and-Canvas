@@ -46,9 +46,23 @@ namespace Creature_and_Canvas.Data
                                                  from Paintings
                                                  where ItemID > ((select count(*) from Paintings) - 20)
                                                  order by ItemID desc");
-
+            
             return paintings.ToList();
         }
 
+        public Painting GetPaintingById(int itemId)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var query = @"select *
+                          from Paintings
+                          where ItemID = @Iid";
+
+            var parameters = new { Iid = itemId };
+
+            var painting = db.QueryFirstOrDefault<Painting>(query, parameters);
+
+            return painting;
+        }
     }
 }

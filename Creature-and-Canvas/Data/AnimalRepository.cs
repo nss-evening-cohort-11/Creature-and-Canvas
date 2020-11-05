@@ -37,5 +37,62 @@ namespace Creature_and_Canvas.Data
 
             return animal;
         }
+        //public List<AnimalPaintingCount> GetAnimalsAndPaintings()
+        //{
+        //    using var db = new SqlConnection(_connectionString);
+
+        //    var animals = db.Query<AnimalPaintingCount>(@"select Animals.AnimalId as [AnimalId], Animals.AnimalName as [AnimalName], count(Paintings.ItemID) as [PaintingsCount]
+        //                                                    from Animals
+        //                                                    join Paintings
+        //                                                    on Animals.AnimalID = Paintings.AnimalID
+        //                                                    group by Animals.AnimalID, Animals.AnimalName");
+
+        //    return animals.ToList();
+        //}
+
+        //public List<Painting> GetFirstThreePaintingsByAnimalId(int animalId)
+        //{
+        //    using var db = new SqlConnection(_connectionString);
+
+        //    var query = @"select top(3) Paintings.Title
+        //                   from Paintings
+        //                   where Paintings.AnimalID = @aid";
+
+        //    var parameters = new { aid = animalId };
+
+        //    var painting = db.Query<Painting>(query, parameters).ToList();
+
+        //    return painting;
+        //}
+
+
+        public List<AnimalPaintingCount> GetAnimalAndPaintingsAndTop3()
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var allAnimals = db.Query<AnimalPaintingCount>(@"select Animals.AnimalId as [AnimalId], Animals.AnimalName as [AnimalName], count(Paintings.ItemID) as [PaintingsCount]
+                                                            from Animals
+                                                            join Paintings
+                                                            on Animals.AnimalID = Paintings.AnimalID
+                                                            group by Animals.AnimalID, Animals.AnimalName");
+
+            foreach(var item in allAnimals.ToList())
+            {
+
+                var query = @"select top(3) Paintings.Title
+                               from Paintings
+                               where Paintings.AnimalID = @aid";
+
+
+                var parameters = new { aid = item.AnimalId };
+
+                var paintings = db.Query<Painting>(query, parameters).ToList();
+                item.TopThreePaintings = paintings;
+
+            }
+
+
+            return allAnimals.ToList();
+        }
     }
 }

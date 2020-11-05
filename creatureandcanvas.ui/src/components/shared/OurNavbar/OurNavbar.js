@@ -44,6 +44,11 @@ class OurNavbar extends React.Component {
                   Animals
                 </Link>
               </li>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/shop'>
+                  Shop
+                </Link>
+              </li>
             </ul>
           </div>
           <form className="form-inline my-2 my-lg-0">
