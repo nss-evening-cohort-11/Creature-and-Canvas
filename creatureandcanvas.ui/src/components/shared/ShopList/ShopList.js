@@ -1,5 +1,6 @@
 import React from 'react';
 import './ShopList.scss';
+import pData from '../../../helpers/data/paintingsData'
 
 class ShopList extends React.Component {
   render() {

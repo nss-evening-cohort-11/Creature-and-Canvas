@@ -14,5 +14,11 @@ const getSinglePainting = (itemId) => new Promise((resolve, reject) => {
         .catch(err => reject(err));
 })
 
-export default {getAllPaintings, getSinglePainting};
+const getPaintingIdByTitle = (title) => new Promise((resolve, reject) => {
+    axios.get(`${baseUrl}/paintings/${title}`)
+        .then(response => resolve(response.data))
+        .catch(err => reject(err))
+})
+
+export default {getAllPaintings, getSinglePainting,  getPaintingIdByTitle};
 

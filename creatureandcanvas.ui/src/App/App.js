@@ -8,8 +8,7 @@ import Shop from '../components/pages/Shop/Shop';
 import Home from '../components/pages/Home/Home';
 import Animals from '../components/pages/Animals/Animals';
 import SingleAnimal from '../components/shared/SingleAnimal/SingleAnimal';
-import Paintings from '../components/pages/Paintings/Paintings';
-import SinglePaintings from '../components/shared/SinglePainting/SinglePainting';
+import SinglePaintings from '../components/pages/SinglePaintings/SinglePaintings';
 import OurFooter from '../components/shared/OurFooter/OurFooter';
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
@@ -36,7 +35,7 @@ class App extends React.Component {
                   <PublicRoute path='/home' exact component={Home} authed={authed}/>
                   <PublicRoute path='/animals' exact component={Animals} authed={authed}/>
                   <PublicRoute path='/animals/12345' exact component={SingleAnimal} authed={authed}/>
-                  <PublicRoute path='/paintings/:itemId' exact component={Paintings} authed={authed}/>
+                  <PublicRoute path='/paintings/:itemId' exact component={SinglePaintings} authed={authed}/>
                   <Redirect from='*' to='/home' />
                 </Switch>
               </div>
