@@ -64,5 +64,20 @@ namespace Creature_and_Canvas.Data
 
             return painting;
         }
+
+        public Painting GetPaintingIdByTitle(string title)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var query = @"select ItemId
+                          from Paintings
+                          where Title = @tid";
+
+            var parameters = new { tid = title };
+
+            var painting = db.QueryFirstOrDefault<Painting>(query, parameters);
+
+            return painting;
+        }
     }
 }

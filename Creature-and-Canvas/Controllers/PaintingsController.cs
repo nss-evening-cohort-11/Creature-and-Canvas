@@ -56,5 +56,16 @@ namespace Creature_and_Canvas.Controllers
 
             return Ok(painting);
         }
+
+        [HttpGet("{title}")]
+        public IActionResult GetPaintingIdByTitle(string title)
+        {
+            var painting = _repo.GetPaintingIdByTitle(title);
+
+            if (painting == null) return NotFound("No product with that Id was found");
+
+            return Ok(painting);
+        }
+
     }
 }
