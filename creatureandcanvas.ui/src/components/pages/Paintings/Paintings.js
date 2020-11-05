@@ -11,7 +11,6 @@ class Paintings extends React.Component {
 
   componentDidMount() {
     const { itemId } = this.props.match.params;
-    console.log(itemId)
     paintingData.getSinglePainting(itemId)
       .then(response => this.setState({painting: response}))
       .catch(err => console.log(err))
