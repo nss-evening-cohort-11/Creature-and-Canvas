@@ -15,3 +15,4 @@ const getSinglePainting = (itemId) => new Promise((resolve, reject) => {
 })
 
 export default {getAllPaintings, getSinglePainting};
+

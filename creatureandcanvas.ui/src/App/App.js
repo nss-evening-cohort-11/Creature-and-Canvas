@@ -36,7 +36,7 @@ class App extends React.Component {
                   <PublicRoute path='/animals' exact component={Animals} authed={authed}/>
                   <PublicRoute path='/animals/12345' exact component={SingleAnimal} authed={authed}/>
                   <PublicRoute path='/paintings/:itemId' exact component={Paintings} authed={authed}/>
-                  <Redirect from='*' to='/shop' />
+                  <Redirect from='*' to='/home' />
                 </Switch>
               </div>
             </div>
