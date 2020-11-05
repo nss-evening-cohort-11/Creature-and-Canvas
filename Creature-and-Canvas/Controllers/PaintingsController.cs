@@ -45,6 +45,10 @@ namespace Creature_and_Canvas.Controllers
             return Ok(latestPaintings);
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         [HttpGet("{id}")]
         public IActionResult GetPaintingById(int id)
         {
