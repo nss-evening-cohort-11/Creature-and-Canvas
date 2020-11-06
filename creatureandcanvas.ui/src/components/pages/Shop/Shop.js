@@ -32,7 +32,7 @@ class Shop extends React.Component {
           <button className='btn btn-secondary mr-5'>Filter By Size</button>
           <button className='btn btn-secondary'>Sort By Price</button>
         </div>
-        <div className='d-flex justify-content-center'>
+        <div className='paintingContainer d-flex justify-content-center'>
           <ul className='list-group mt-5 mb-5'>
             {buildAnimalList}
           </ul>

@@ -3,10 +3,10 @@ import './ShopList.scss';
 
 class ShopList extends React.Component {
   render() {
-    const{ animal } = this.props;
+    const { animal } = this.props;
     return (
-      <div className='ShopList justify-content-center'>
-        <li className='list-group-item m-3'>
+      <div className='ShopList mb-5'>
+        <li className='list-group-item'>
           <div className="d-flex">
             <h2 className='item-name'>{animal.animalName}</h2>
             <p className='count mr-auto mt-1'>({animal.paintingsCount})</p>

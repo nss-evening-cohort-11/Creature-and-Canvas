@@ -32,6 +32,7 @@ class App extends React.Component {
               <div className='row'>
                 <Switch>
                   <PublicRoute path='/shop' exact component={Shop} authed={authed}/>
+                  <PublicRoute path='/shop/:animalId' exact component={Shop} authed={authed}/>
                   <PublicRoute path='/home' exact component={Home} authed={authed}/>
                   <PublicRoute path='/animals' exact component={Animals} authed={authed}/>
                   <PublicRoute path='/animals/12345' exact component={SingleAnimal} authed={authed}/>
