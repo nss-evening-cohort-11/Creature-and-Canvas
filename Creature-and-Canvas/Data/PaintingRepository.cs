@@ -23,17 +23,17 @@ namespace Creature_and_Canvas.Data
             return paintings.ToList();
         }
 
-        public Painting SearchPaintingsByKeyword(string keyword)
+        public List<Painting> SearchPaintingsByKeyword(string keyword)
         {
             using var db = new SqlConnection(_connectionString);
 
             var query = @"select *
                           from Paintings
-                          where PaintingDescription like '%" + keyword + "%'";
+                          where Title like '%' + @kwd + '%'";
 
             var parameters = new { kwd = keyword };
 
-            var painting = db.QueryFirstOrDefault<Painting>(query, parameters);
+            var painting = db.Query<Painting>(query, parameters).ToList();
 
             return painting;
         }
