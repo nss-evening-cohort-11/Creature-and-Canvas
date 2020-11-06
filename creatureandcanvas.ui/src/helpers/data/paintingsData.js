@@ -14,4 +14,11 @@ const getSinglePainting = (itemId) => new Promise((resolve, reject) => {
         .catch(err => reject(err));
 })
 
-export default {getAllPaintings, getSinglePainting};
+const getPaintingsByKeyword = (keyword) => new Promise((resolve,reject) => {
+    axios.get(`${baseUrl}/paintings/search/${keyword}`)
+        .then(response => resolve(response.data))
+        .catch(error => reject(error));
+});
+
+export default {getAllPaintings, getSinglePainting, getPaintingsByKeyword};
+
