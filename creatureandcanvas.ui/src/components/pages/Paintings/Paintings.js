@@ -1,7 +1,7 @@
 import React from 'react';
 import './Paintings.scss';
 import { Link } from 'react-router-dom';
-import paintingData from '../../../helpers/data/paintingsData'
+import paintingData from '../../../helpers/data/paintingsData';
 
 
 
@@ -19,7 +19,7 @@ class Paintings extends React.Component {
 
   render() {
     const { painting } = this.state;
-    const shopLink = `/shop/${painting.animalId}`
+    const shopLink = `/animals`
     return (
       <div className="SinglePaintingView">
         <div className="card w-100 mb-5">

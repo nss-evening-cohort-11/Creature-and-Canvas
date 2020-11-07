@@ -4,7 +4,7 @@ import './OurFooter.scss';
 class OurFooter extends React.Component {
   render() {
     return (
-      <nav className="navbar bottom navbar-success bg-dark fixed-bottom">
+      <nav className="navbar bottom navbar-success bg-dark sticky-bottom">
           <a className="navbar-brand text-center mx-auto" href="#">@2020 Creature & Canvas</a>
       </nav>
     );

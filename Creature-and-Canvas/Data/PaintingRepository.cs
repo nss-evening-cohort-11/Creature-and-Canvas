@@ -1,4 +1,5 @@
-﻿using Creature_and_Canvas.Models;
+﻿using Creature_and_Canvas.Controllers;
+using Creature_and_Canvas.Models;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System;
@@ -67,5 +68,21 @@ namespace Creature_and_Canvas.Data
 
             return painting;
         }
+
+        public List<AnimalPainting> GetAllPaintingByAnimalId(int animalId)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var query = @"select * 
+                          from Paintings
+                          where Paintings.AnimalID = @aid";
+
+            var parameters = new { aid = animalId };
+
+            var paintings = db.Query<AnimalPainting>(query, parameters);
+
+            return (List<AnimalPainting>)paintings;
+        }
+
     }
 }
