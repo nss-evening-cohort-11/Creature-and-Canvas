@@ -27,7 +27,17 @@ namespace Creature_and_Canvas.Controllers
             return Ok(allAnimals);
         }
 
-       [HttpGet("topThree")]
+        [HttpGet("{id}")]
+        public IActionResult GetAnimalById(int id)
+        {
+            var animal = _repo.GetAnimalById(id);
+
+            if (animal == null) return NotFound("No animal with that Id was found");
+
+            return Ok(animal);
+        }
+
+        [HttpGet("topThree")]
         public IActionResult GetAllPaintingsAndTopThree()
         {
             var paintingsAndAnimals = _repo.GetAnimalAndPaintingsAndTop3();

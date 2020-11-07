@@ -20,5 +20,11 @@ const getPaintingsByKeyword = (keyword) => new Promise((resolve,reject) => {
         .catch(error => reject(error));
 });
 
-export default {getAllPaintings, getSinglePainting, getPaintingsByKeyword};
+const getAllAnimalPaintingsById = (animalId) => new Promise((resolve, reject) => {
+    axios.get(`${baseUrl}/paintings/animalPainting/${animalId}`)
+        .then(response => resolve(response.data))
+        .catch(error => reject(error));
+});
+
+export default {getAllPaintings, getSinglePainting, getPaintingsByKeyword, getAllAnimalPaintingsById};
 

@@ -18,7 +18,7 @@ class OurNavbar extends React.Component {
     return (
       <div className='OurNavbar'>
         <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
-          <Link className='navbar-brand' to='/shop'>
+          <Link className='navbar-brand' to='/home'>
             Creature & Canvas
           </Link>
           <button
