@@ -19,7 +19,7 @@ class Paintings extends React.Component {
 
   render() {
     const { painting } = this.state;
-    const shopLink = `/animals`
+    const animalPaintingLink = `/animals/paintings/${painting.animalId}`
     return (
       <div className="SinglePaintingView">
         <div className="card w-100 mb-5">
@@ -28,7 +28,7 @@ class Paintings extends React.Component {
             <p className="card-text">{painting.paintingDescription}</p>
             <img src={painting.imageURL} alt="" className="card-img-bottom"/>
             <p className="intro">See all paintings by</p>
-            <Link className="toShop" to={shopLink}><h4 className="mt-3">{painting.animalName}</h4></Link>
+            <Link to={animalPaintingLink}><h4 className="mt-3">{painting.animalName}</h4></Link>
             <button className="btn btn-secondary" onClick={() => console.log("Id: " + painting.itemId)}>Buy Immediately</button>
           </div>
         </div>
