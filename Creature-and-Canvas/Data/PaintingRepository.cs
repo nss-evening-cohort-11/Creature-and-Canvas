@@ -72,9 +72,9 @@ namespace Creature_and_Canvas.Data
         {
             using var db = new SqlConnection(_connectionString);
 
-            var query = @"select ItemId
+            var query = @"select ItemID
                           from Paintings
-                          where Title = @tid";
+                          where Title like '%" + title + "%'";
 
             var parameters = new { tid = title };
 

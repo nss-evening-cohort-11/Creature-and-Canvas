@@ -55,7 +55,7 @@ namespace Creature_and_Canvas.Controllers
             return Ok(painting);
         }
 
-        [HttpGet("{title}")]
+        [HttpGet("GetPaintingIdByTitle({title})")]
         public IActionResult GetPaintingIdByTitle(string title)
         {
             var painting = _repo.GetPaintingIdByTitle(title);
