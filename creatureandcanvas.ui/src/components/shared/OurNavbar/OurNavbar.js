@@ -49,6 +49,11 @@ class OurNavbar extends React.Component {
                   Shop
                 </Link>
               </li>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/shopping-cart'>
+                  <button><i class="fas fa-shopping-cart"></i></button>
+                </Link>
+              </li>
             </ul>
           </div>
           <form className="form-inline my-2 my-lg-0">
