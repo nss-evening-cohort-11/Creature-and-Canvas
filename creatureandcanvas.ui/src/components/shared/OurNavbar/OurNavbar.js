@@ -33,7 +33,7 @@ class OurNavbar extends React.Component {
             <span className='navbar-toggler-icon'></span>
           </button>
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul className='navbar-nav ml-auto'>
+            <ul className='navbar-nav ml-auto mr-3'>
               <li className='nav-item'>
                 <Link className='nav-link' to='/home'>
                   Home
@@ -51,7 +51,7 @@ class OurNavbar extends React.Component {
               </li>
               <li className='nav-item'>
                 <Link className='nav-link' to='/shopping-cart'>
-                  <button><i class="fas fa-shopping-cart"></i></button>
+                  <i class="fas fa-shopping-cart fa-lg"></i>
                 </Link>
               </li>
             </ul>
