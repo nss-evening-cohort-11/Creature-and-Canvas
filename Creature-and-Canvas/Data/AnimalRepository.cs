@@ -44,7 +44,6 @@ namespace Creature_and_Canvas.Data
 
             var allAnimals = db.Query<AnimalPaintingCount>(@"select Animals.AnimalId as [AnimalId], 
                                                             Animals.AnimalName as [AnimalName], count(Paintings.ItemID) as [PaintingsCount]
-                                                            
                                                             from Animals
                                                             join Paintings
                                                             on Animals.AnimalID = Paintings.AnimalID
