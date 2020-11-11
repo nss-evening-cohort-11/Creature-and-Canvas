@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import './App.scss';
 
+import fbConnection from "../helpers/data/connection";
+
+import Login from '../components/pages/Login/Login';
 import OurNavbar from '../components/shared/OurNavbar/OurNavbar';
 import Shop from '../components/pages/Shop/Shop';
 import ShopSearch from '../components/pages/ShopSearch/ShopSearch';
@@ -32,6 +35,7 @@ class App extends React.Component {
             <div className='container d-flex justify-content-center'>
               <div className='row'>
                 <Switch>
+                  <Route path="/Login" component={Login}></Route>
                   <PublicRoute path='/shop' exact component={Shop} authed={authed}/>
                   <PublicRoute path='/shop/:animalId' exact component={Shop} authed={authed}/>
                   <PublicRoute path='/shop/search/:keyword' exact component={ShopSearch} authed={authed}/>
