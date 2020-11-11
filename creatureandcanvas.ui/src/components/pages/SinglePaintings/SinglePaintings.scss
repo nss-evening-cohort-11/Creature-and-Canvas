@@ -1,7 +1,16 @@
-.Paintings {
+.SinglePaintingView {
   display: block;
 }
 
+.card-img-bottom {
+  height: 60vh;
+  object-fit: cover;
+}
+
 button {
-  margin: 2rem;
+  margin: 1rem;
+}
+
+.intro {
+  font-size: medium;
 }

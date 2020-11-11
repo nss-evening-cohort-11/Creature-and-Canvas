@@ -1,4 +1,5 @@
-﻿using Creature_and_Canvas.Models;
+﻿using Creature_and_Canvas.Controllers;
+using Creature_and_Canvas.Models;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System;
@@ -23,17 +24,17 @@ namespace Creature_and_Canvas.Data
             return paintings.ToList();
         }
 
-        public Painting SearchPaintingsByKeyword(string keyword)
+        public List<Painting> SearchPaintingsByKeyword(string keyword)
         {
             using var db = new SqlConnection(_connectionString);
 
             var query = @"select *
                           from Paintings
-                          where PaintingDescription like '%" + keyword + "%'";
+                          where Title like '%' + @kwd + '%'";
 
             var parameters = new { kwd = keyword };
 
-            var painting = db.QueryFirstOrDefault<Painting>(query, parameters);
+            var painting = db.Query<Painting>(query, parameters).ToList();
 
             return painting;
         }
@@ -68,19 +69,20 @@ namespace Creature_and_Canvas.Data
             return painting;
         }
 
-        public Painting GetPaintingIdByTitle(string title)
+        public List<AnimalPainting> GetAllPaintingByAnimalId(int animalId)
         {
             using var db = new SqlConnection(_connectionString);
 
-            var query = @"select ItemID
+            var query = @"select * 
                           from Paintings
-                          where Title like '%" + title + "%'";
+                          where Paintings.AnimalID = @aid";
 
-            var parameters = new { tid = title };
+            var parameters = new { aid = animalId };
 
-            var painting = db.QueryFirstOrDefault<Painting>(query, parameters);
+            var paintings = db.Query<AnimalPainting>(query, parameters);
 
-            return painting;
+            return (List<AnimalPainting>)paintings;
         }
+
     }
 }

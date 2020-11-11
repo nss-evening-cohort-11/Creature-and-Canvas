@@ -1,7 +1,7 @@
 import React from 'react';
 import './Animals.scss';
 import animalsData from '../../../helpers/data/animalsData';
-import SingleAnimal from '../../shared/SingleAnimal/SingleAnimal';
+import AnimalCard from '../../shared/AnimalCard/AnimalCard';
 
 class Animals extends React.Component {
   state = {
@@ -18,13 +18,15 @@ class Animals extends React.Component {
   render() {
     const { animals } = this.state;
     const buildAnimalsList = animals.map((animal) => {
-      return <SingleAnimal key={animal.animalName} animal={animal} />;
+      return <AnimalCard key={animal.animalName} animal={animal} />;
     });
 
     return (
       <div className='Animals'>
         <h1>Animals</h1>
-        {buildAnimalsList}
+          <div className="d-flex flex-wrap justify-content-center">
+            {buildAnimalsList}
+          </div>
       </div>
     );
   }

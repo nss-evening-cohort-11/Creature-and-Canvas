@@ -14,12 +14,23 @@ const getSinglePainting = (itemId) => new Promise((resolve, reject) => {
         .catch(err => reject(err));
 })
 
-const getPaintingIdByTitle = (title) => new Promise((resolve, reject) => {
-    axios.get(`${baseUrl}/paintings/GetPaintingIdByTitle(${title})`)
+// const getPaintingIdByTitle = (title) => new Promise((resolve, reject) => {
+//     axios.get(`${baseUrl}/paintings/GetPaintingIdByTitle(${title})`)
+//         .then(response => resolve(response.data))
+//         .catch(err => reject(err))
+// })
+
+const getPaintingsByKeyword = (keyword) => new Promise((resolve,reject) => {
+    axios.get(`${baseUrl}/paintings/search/${keyword}`)
         .then(response => resolve(response.data))
-        .catch(err => reject(err))
-})
+        .catch(error => reject(error));
+});
 
+const getAllAnimalPaintingsById = (animalId) => new Promise((resolve, reject) => {
+    axios.get(`${baseUrl}/paintings/animalPainting/${animalId}`)
+        .then(response => resolve(response.data))
+        .catch(error => reject(error));
+});
 
-export default {getAllPaintings, getSinglePainting, getPaintingIdByTitle};
+export default {getAllPaintings, getSinglePainting, getPaintingsByKeyword, getAllAnimalPaintingsById};
 

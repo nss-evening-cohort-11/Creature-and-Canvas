@@ -19,7 +19,7 @@ class SinglePaintingCard extends React.Component {
                   <p>Size: {painting.canvasSize}</p>
                   <p>Price: ${painting.price}</p>
                   <div className="btnContainer text-center">
-                  <Link className="btn btn-secondary" to={singleLink}>View</Link>
+                    <Link className="btn btn-secondary" to={singleLink}>View</Link>
                   </div>
                 </div>
             </div>

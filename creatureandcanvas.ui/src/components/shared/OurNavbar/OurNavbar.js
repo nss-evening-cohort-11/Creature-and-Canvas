@@ -3,10 +3,21 @@ import './OurNavbar.scss';
 import { Link } from 'react-router-dom';
 
 class OurNavbar extends React.Component {
+  state = {
+    searchValue: '',
+  }
+
+  setSearchValue = (e) => {
+    e.preventDefault();
+    this.setState({searchValue: e.target.value})
+  }
+
   render() {
+    const searchKeywordValue = this.state.searchValue;
+    const keywordLink = `/shop/search/${searchKeywordValue}`;
     return (
       <div className='OurNavbar'>
-        <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
           <Link className='navbar-brand' to='/home'>
             Creature & Canvas
           </Link>
@@ -40,6 +51,12 @@ class OurNavbar extends React.Component {
               </li>
             </ul>
           </div>
+          <form className="form-inline my-2 my-lg-0">
+            <input onChange={this.setSearchValue} className="form-control mr-sm-2" type="text" placeholder="Search Products" aria-label="Search"/>
+            <Link to={keywordLink} searchvalue={this.state.searchValue} className="btn btn-outline-success my-2 my-sm-0">
+            Go
+            </Link>
+          </form>
         </nav>
       </div>
     );

@@ -45,25 +45,24 @@ namespace Creature_and_Canvas.Controllers
             return Ok(latestPaintings);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetPaintingById(int id)
+        [HttpGet("{itemId}")]
+        public IActionResult GetPaintingById(int itemId)
         {
-            var painting = _repo.GetPaintingById(id);
+            var painting = _repo.GetPaintingById(itemId);
 
             if (painting == null) return NotFound("No product with that Id was found");
 
             return Ok(painting);
         }
 
-        [HttpGet("GetPaintingIdByTitle({title})")]
-        public IActionResult GetPaintingIdByTitle(string title)
+        [HttpGet("animalPainting/{animalId}")]
+        public IActionResult GetPaintingByAnimalId(int animalId)
         {
-            var painting = _repo.GetPaintingIdByTitle(title);
+            var painting = _repo.GetAllPaintingByAnimalId(animalId);
 
-            if (painting == null) return NotFound("No product with that Id was found");
+            if (painting == null) return NotFound("No painting with that animalId was found");
 
             return Ok(painting);
         }
-
     }
 }
