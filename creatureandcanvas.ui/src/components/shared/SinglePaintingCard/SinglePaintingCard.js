@@ -1,8 +1,8 @@
 import React from 'react';
-import './SinglePainting.scss';
+import './SinglePaintingCard.scss';
 import {Link} from 'react-router-dom';
 
-class SinglePainting extends React.Component {
+class SinglePaintingCard extends React.Component {
   render() {
     const { painting } = this.props;
     const singleLink = `paintings/${painting.itemID}`
@@ -30,4 +30,4 @@ class SinglePainting extends React.Component {
   }
 }
 
-export default SinglePainting;
+export default SinglePaintingCard;

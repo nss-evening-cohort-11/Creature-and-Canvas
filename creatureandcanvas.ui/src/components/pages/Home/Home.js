@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.scss';
 import paintingsData from '../../../helpers/data/paintingsData';
-import SinglePainting from '../../shared/SinglePainting/SinglePainting';
+import SinglePaintingCard from '../../shared/SinglePaintingCard/SinglePaintingCard';
 
 class Home extends React.Component {
   state = {
@@ -18,7 +18,7 @@ class Home extends React.Component {
   render() {
     const { paintings } = this.state;
     const buildPaintingCards = paintings.map((painting) => {
-      return <SinglePainting key={painting.itemId} painting={painting} />;
+      return <SinglePaintingCard key={painting.itemId} painting={painting} />;
     });
 
     return (

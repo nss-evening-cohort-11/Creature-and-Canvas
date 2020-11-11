@@ -36,6 +36,7 @@ class Shop extends React.Component {
           <ul className='list-group mt-5 mb-5'>
             {buildAnimalList}
           </ul>
+          
         </div>
       </div>
     );
