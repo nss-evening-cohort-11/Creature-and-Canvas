@@ -14,12 +14,6 @@ const getSinglePainting = (itemId) => new Promise((resolve, reject) => {
         .catch(err => reject(err));
 })
 
-// const getPaintingIdByTitle = (title) => new Promise((resolve, reject) => {
-//     axios.get(`${baseUrl}/paintings/GetPaintingIdByTitle(${title})`)
-//         .then(response => resolve(response.data))
-//         .catch(err => reject(err))
-// })
-
 const getPaintingsByKeyword = (keyword) => new Promise((resolve,reject) => {
     axios.get(`${baseUrl}/paintings/search/${keyword}`)
         .then(response => resolve(response.data))
