@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
@@ -15,39 +17,56 @@ import AnimalsPaintings from '../components/pages/AnimalPaintings/AnimalPainting
 import SinglePaintings from '../components/pages/SinglePaintings/SinglePaintings';
 import OurFooter from '../components/shared/OurFooter/OurFooter';
 
-const PublicRoute = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = (props) => (authed === true
-    ? (<Component {...props} />)
-    : (<Redirect to={{ pathname: '/home', state: { from: props.location } }} />));
-  return <Route {...rest} render={(props) => routeChecker(props)} />;
-};
+fbConnection();
+
+// const PublicRoute = ({ component: Component, authed, ...rest }) => {
+//   const routeChecker = (props) => (authed === false
+//     ? (<Component {...props} />)
+//     : (<Redirect to={{ pathname: '/home', state: { from: props.location } }} />));
+//   return <Route {...rest} render={(props) => routeChecker(props)} />;
+// };
 
 class App extends React.Component {
-  state = {authed: true,}
+  // state = {authed: false,}
+
+  // componentDidMount() {
+  //   this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       this.setState({ authed: true });
+  //     } else {
+  //       this.setState({ authed: false });
+  //     }
+  //   });
+  // }
+
+  // componentWillUnmount() {
+  //   this.removeListener();
+  // }
+
   render() {
-    const { authed } = this.state;
+    //const { authed } = this.state;
 
     return (
       <div className='App'>
         <BrowserRouter>
           <React.Fragment>
-            <OurNavbar authed={authed}/>
+            <OurNavbar/>
             <div className='container d-flex justify-content-center'>
               <div className='row'>
                 <Switch>
-                  <Route path="/Login" component={Login}></Route>
-                  <PublicRoute path='/shop' exact component={Shop} authed={authed}/>
-                  <PublicRoute path='/shop/:animalId' exact component={Shop} authed={authed}/>
-                  <PublicRoute path='/shop/search/:keyword' exact component={ShopSearch} authed={authed}/>
-                  <PublicRoute path='/home' exact component={Home} authed={authed}/>
-                  <PublicRoute path='/animals' exact component={Animals} authed={authed}/>
-                  <PublicRoute path='/animals/paintings/:animalId' exact component={AnimalsPaintings} authed={authed}/>
-                  <PublicRoute path='/paintings/:itemId' exact component={SinglePaintings} authed={authed}/>
+                  <Route path='/login' component={Login}/>
+                  <Route path='/shop' exact component={Shop}/>
+                  <Route path='/shop/:animalId' exact component={Shop}/>
+                  <Route path='/shop/search/:keyword' exact component={ShopSearch}/>
+                  <Route path='/home' exact component={Home}/>
+                  <Route path='/animals' exact component={Animals}/>
+                  <Route path='/animals/paintings/:animalId' exact component={AnimalsPaintings}/>
+                  <Route path='/paintings/:itemId' exact component={SinglePaintings}/>
                   <Redirect from='*' to='/home' />
                 </Switch>
               </div>
             </div>
-            <OurFooter authed={authed}/>
+            <OurFooter/>
           </React.Fragment>
         </BrowserRouter>
       </div>
