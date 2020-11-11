@@ -1,7 +1,7 @@
 import React from 'react';
 import './SinglePaintings.scss';
 import paintingData from '../../../helpers/data/paintingsData'
-
+import {Link} from 'react-router-dom'
 
 
 class SinglePaintings extends React.Component {

@@ -1,28 +1,17 @@
 import React from 'react';
 import './ShopList.scss';
-import pData from '../../../helpers/data/paintingsData'
-import { baseUrl } from '../../../helpers/constants.json'
+import {Link} from 'react-router-dom'
+
 
 class ShopList extends React.Component {
- 
-
-
-  printPaintingsList = (animalPaintings) => new Promise((resolve, reject) => {
-    animalPaintings.forEach(painting => {
-      pData.getPaintingIdByTitle(painting.title)
-      .then(painting => {
-          console.log(painting, 'painting')
-          let animalLink = `${baseUrl}/paintings/${painting.itemID}`
-          console.log(animalLink, 'animalLink')
-          return <h5><a href={animalLink}>{painting.title}</a></h5>
-        })
-
-     
-    }).catch(err => reject(err))
-  });
-  
   render() {
     const { animal } = this.props;
+    const topThree = animal.topThreePaintings;
+
+    const buildAnimalList = topThree.map((aPainting) => {
+      return <Link to={`/paintings/${aPainting.itemID}`}>{aPainting.title}</Link>
+    });
+
     return (
       <div className='ShopList mb-5'>
         <li className='list-group-item'>
@@ -31,7 +20,9 @@ class ShopList extends React.Component {
             <p className='count mr-auto mt-1'>({animal.paintingsCount})</p>
           </div>
           <div className="text-left">
-             { this.printPaintingsList(animal.topThreePaintings) }
+            <ul className='list-group mt-5 mb-5'>
+              {buildAnimalList}
+            </ul>
           </div>
         </li>
       </div>
