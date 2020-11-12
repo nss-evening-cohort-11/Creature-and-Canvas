@@ -17,10 +17,23 @@ class Login extends React.Component {
     authRequests
       .loginUser(user)
       .then(() => {
-        this.props.history.push('/customers');
+        this.props.history.push('/animals');
       })
       .catch(error => {
         console.error('there was an error in registering', error);
+      });
+  };
+
+  logOutClickEvent = (e) => {
+    const { user } = this.state;
+    e.preventDefault();
+    authRequests
+    .logoutUser(user)
+      .then(() => {
+        this.props.history.push('/animals');
+      })
+      .catch(error => {
+        console.error('could not log you out', error);
       });
   };
 
@@ -86,6 +99,14 @@ class Login extends React.Component {
                   onClick={this.loginClickEvent}
                 >
                   Login
+                </button>
+
+                <button
+                  type="submit"
+                  className="btn btn-default col-xs-12"
+                  onClick={this.loginClickEvent}
+                >
+                  LogOUT
                 </button>
               </div>
             </div>
