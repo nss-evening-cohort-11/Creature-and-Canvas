@@ -52,7 +52,7 @@ class App extends React.Component {
           <React.Fragment>
             <OurNavbar/>
             <div className='container d-flex justify-content-center'>
-              <div className='row'>
+              <div className='row w-100'>
                 <Switch>
                   <Route path='/login' component={Login}/>
                   <Route path='/shop' exact component={Shop}/>
