@@ -16,20 +16,21 @@ axios.interceptors.request.use(function (request) {
   return Promise.reject(err);
 });
 
-const registerUser = (user) => {
+const registerUser = (email, password) => {
 
   //sub out whatever auth method firebase provides that you want to use.
-  return firebase.auth().createUserWithEmailAndPassword(user.email, user.password).then(cred => {
+  return firebase.auth().createUserWithEmailAndPassword(email.trim(), password).then(cred => {
 
     //get email from firebase
     let userInfo = {email: cred.user.email};
-
+    console.
     //get token from firebase
     cred.user.getIdToken()
       //save the token to the session storage
       .then(token => sessionStorage.setItem('token',token))
+      
       //save the user to the the api
-      .then(() => axios.post(`${baseUrl}/users`,userInfo));
+      .then(() => axios.post(`${baseUrl}/customers`, userInfo));
   });
 };
 
