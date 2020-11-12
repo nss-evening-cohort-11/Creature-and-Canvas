@@ -49,7 +49,7 @@ class Login extends React.Component {
     this.setState({ user: tempUser });
   };
 
-  register = (email, password) => authRequests.registerUser(email, password)
+  // register = (email, password) => authRequests.registerUser(email, password)
 
   render () {
     const { user } = this.state;
@@ -91,7 +91,7 @@ class Login extends React.Component {
             </div>
             <div className="form-group">
               <div className="col-sm-12 text-center">
-                <button className='btn' onClick={() => this.register(user.email, user.password)}>Need to Register?</button>
+                <Link to='/register'>Need to Register?</Link>
               </div>
             </div>
             <div className="form-group">

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Creature_and_Canvas.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Creature_and_Canvas.Models;
 
 namespace Creature_and_Canvas.Controllers
 {
@@ -14,9 +15,9 @@ namespace Creature_and_Canvas.Controllers
     {
         CustomerRepository _repo;
 
-        public CustomersController()
+        public CustomersController(CustomerRepository repo)
         {
-            _repo = new CustomerRepository();
+            _repo = repo;
         }
 
         [HttpGet]
@@ -36,6 +37,14 @@ namespace Creature_and_Canvas.Controllers
             if (customer == null) return NotFound("No customer with that Id was found");
 
             return Ok(customer);
+        }
+
+        [HttpPost]
+        public IActionResult CreateCustomer(Customer customer)
+        {
+            _repo.Add(customer);
+
+            return Created($"/api/customers/{customer.CustomerID}", customer);
         }
 
         [HttpDelete("{id}")]
