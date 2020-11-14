@@ -33,7 +33,7 @@ class Home extends React.Component {
             We believe that all creatures possess the need to create, and our job is to facilitate that need (as well as make a little som'n som'n on the side, we got rent to pay too.)
           </h4>
         </div>
-        <div className="d-flex mx-auto">
+        <div className="d-flex flex-wrap mx-auto">
           {buildPaintingCards}
         </div>
 
