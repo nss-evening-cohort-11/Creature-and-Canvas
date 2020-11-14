@@ -54,7 +54,7 @@ class Login extends React.Component {
 
   render () {
     const { user } = this.state;
-    
+
     return (
       <div className="Login w-100">
         <div id="login-form">
@@ -67,7 +67,7 @@ class Login extends React.Component {
               <div className="col-sm-8">
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control offset-3"
                   id="inputEmail"
                   placeholder="Email"
                   value={user.email}
@@ -82,7 +82,7 @@ class Login extends React.Component {
               <div className="col-sm-8">
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control offset-3"
                   id="inputPassword"
                   placeholder="Password"
                   value={user.password}
