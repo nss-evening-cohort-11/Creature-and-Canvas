@@ -12,31 +12,27 @@ class OrdersTable extends React.Component {
         <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Order Date</th>
+      <th scope="col">Total</th>
+      <th scope="col">Details</th>
     </tr>
   </thead>
   {/* foreach here  */}
   <tbody>
     <tr>
-      <th scope="row">1</th>
+      <td>1</td>
       <td>Mark</td>
       <td>Otto</td>
-      <td>@mdo</td>
     </tr>
     <tr>
-      <th scope="row">2</th>
+      <td>2</td>
       <td>Jacob</td>
       <td>Thornton</td>
-      <td>@fat</td>
     </tr>
     <tr>
-      <th scope="row">3</th>
+      <td>3</td>
       <td>Larry</td>
       <td>the Bird</td>
-      <td>@twitter</td>
     </tr>
   </tbody>
 </table>
