@@ -4,16 +4,17 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Creature_and_Canvas.Data
 {
     public class CustomerRepository
     {
-        static List<Customer> _customers = new List<Customer>();
-
-        const string _connectionString = "Server=localhost;Database=Creature_and_Canvas;Trusted_Connection=True;";
-
+        readonly string _connectionString;
+        public CustomerRepository(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("Creature_and_Canvas");
+        }
         public List<Customer> GetCustomers()
         {
             using var db = new SqlConnection(_connectionString);
@@ -39,6 +40,26 @@ namespace Creature_and_Canvas.Data
 
             return customer;
         }
+
+        public void Add(Customer customerToAdd)
+        {
+            var sql = @"INSERT INTO [dbo].[Customers]
+                               ([FirstName]
+                               ,[LastName]
+                               ,[EmailAddress]
+                               ,[MailingAddress]
+                               ,[IsDeleted])
+                        Output inserted.CustomerID
+                        VALUES
+                               (@firstName,@lastName,@emailAddress,@mailingAddress,@isDeleted)";
+
+            using var db = new SqlConnection(_connectionString);
+
+            var newId = db.ExecuteScalar<int>(sql, customerToAdd);
+
+            customerToAdd.CustomerID = newId;
+        }
+
 
         public void Remove(int customerId)
         {

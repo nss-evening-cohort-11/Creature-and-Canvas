@@ -12,6 +12,6 @@ namespace Creature_and_Canvas.Models
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public string MailingAddress { get; set; }
-        public string AccountCreated { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

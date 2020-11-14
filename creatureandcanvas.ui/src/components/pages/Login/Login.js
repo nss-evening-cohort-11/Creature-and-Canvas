@@ -17,10 +17,23 @@ class Login extends React.Component {
     authRequests
       .loginUser(user)
       .then(() => {
-        this.props.history.push('/customers');
+        this.props.history.push('/animals');
       })
       .catch(error => {
         console.error('there was an error in registering', error);
+      });
+  };
+
+  logOutClickEvent = (e) => {
+    const { user } = this.state;
+    e.preventDefault();
+    authRequests
+    .logoutUser(user)
+      .then(() => {
+        this.props.history.push('/animals');
+      })
+      .catch(error => {
+        console.error('could not log you out', error);
       });
   };
 
@@ -36,13 +49,16 @@ class Login extends React.Component {
     this.setState({ user: tempUser });
   };
 
+  // register = (email, password) => authRequests.registerUser(email, password)
+
   render () {
     const { user } = this.state;
+    
     return (
-      <div className="Login">
+      <div className="Login w-100">
         <div id="login-form">
           <h1 className="text-center">Login</h1>
-          <form className="form-horizontal col-sm-6 col-sm-offset-3">
+          <form className="form-horizontal col-sm-6 col-sm-offset-3 mx-auto">
             <div className="form-group">
               <label htmlFor="inputEmail" className="col-sm-4 control-label">
                 Email:
@@ -75,7 +91,7 @@ class Login extends React.Component {
             </div>
             <div className="form-group">
               <div className="col-sm-12 text-center">
-                <Link to="/register">Need to Register?</Link>
+                <Link to='/register'>Need to Register?</Link>
               </div>
             </div>
             <div className="form-group">
@@ -86,6 +102,14 @@ class Login extends React.Component {
                   onClick={this.loginClickEvent}
                 >
                   Login
+                </button>
+
+                <button
+                  type="submit"
+                  className="btn btn-default col-xs-12"
+                  onClick={this.loginClickEvent}
+                >
+                  LogOUT
                 </button>
               </div>
             </div>

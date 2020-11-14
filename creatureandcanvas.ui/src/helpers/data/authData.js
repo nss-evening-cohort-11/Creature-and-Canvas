@@ -2,8 +2,8 @@ import firebase from 'firebase';
 import axios from 'axios';
 import {baseUrl} from '../constants.json';
 
-import customersData from './customersData.js';
-
+// interceptors work by changing the outbound request before the xhr is sent 
+// or by changing the response before it's returned to our .then() method.
 axios.interceptors.request.use(function (request) {
   const token = sessionStorage.getItem('token');
 
@@ -16,20 +16,39 @@ axios.interceptors.request.use(function (request) {
   return Promise.reject(err);
 });
 
-const checkExistingUser = (uid) => {
-    if (customersData.checkCustomerUid(uid)) {
-        firebase.auth.signInWithPopup();
-    } else {
-        console.log('You are not registered');
-    }
+const registerUser = (user) => {
 
-}
+  //sub out whatever auth method firebase provides that you want to use.
+  return firebase.auth().createUserWithEmailAndPassword(user.email.trim(), user.password).then(cred => {
+
+    //get email from firebase
+    let userInfo = {
+      EmailAddress: cred.user.email,
+      FirstName: user.firstName,
+      LastName: user.lastName,
+      MailingAddress: user.mailingAddress,
+      IsDeleted: user.isDeleted
+    };
+
+    //get token from firebase
+    cred.user.getIdToken()
+      //save the token to the session storage
+      .then(token => sessionStorage.setItem('token',token))
+      
+      //save the user to the the api
+      .then(() => axios.post(`${baseUrl}/customers`, userInfo))
+      .catch(err => console.error('Post Customer broke', err));
+  });
+};
 
 const loginUser = (user) => {
-  return firebase.auth().signInWithPopup
-    .then(cred => {
+  //sub out whatever auth method firebase provides that you want to use.
+  return firebase.auth().signInWithEmailAndPassword(user.email, user.password).then(cred => {
+    //get token from firebase
     cred.user.getIdToken()
-      .then(token => sessionStorage.setItem('token',token));
+        //save the token to the session storage
+      .then(token => sessionStorage.setItem('token',token))
+      .catch(err => console.error('Log in Broke', err));
   });
 };
 
@@ -41,4 +60,4 @@ const getUid = () => {
   return firebase.auth().currentUser.uid;
 };
 
-export default {getUid, loginUser, logoutUser};
+export default {getUid, loginUser, logoutUser, registerUser};

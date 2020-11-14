@@ -1,5 +1,5 @@
 {
-    "baseUrl" : "https://localhost:50225/api",
+    "baseUrl" : "http://localhost:50225/api",
     "firebaseConfig" : {
         "apiKey": "AIzaSyD3ThlAuRxvRW0Pjaf9xfR1hE64aSnRC_c",
         "authDomain": "creature-and-canvas.firebaseapp.com",

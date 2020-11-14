@@ -4,7 +4,7 @@ import {baseUrl} from "../constants.json"
 const checkCustomerUid = (uid) => new Promise((resolve, reject) => {
     axios.get(`${baseUrl}/customers/${uid}`)
         .then(response => resolve(response.data))
-        .catch(error => reject('No customer exists with this login', error));
+        .catch(error => console.error('No customer exists with this login', error));
 });
 
 const createNewCustomer = (uid, userInput) => new Promise((resolve, reject) => {
