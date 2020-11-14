@@ -36,7 +36,8 @@ const registerUser = (user) => {
       .then(token => sessionStorage.setItem('token',token))
       
       //save the user to the the api
-      .then(() => axios.post(`${baseUrl}/customers`, userInfo));
+      .then(() => axios.post(`${baseUrl}/customers`, userInfo))
+      .catch(err => console.error('Post Customer broke', err));
   });
 };
 
@@ -46,7 +47,8 @@ const loginUser = (user) => {
     //get token from firebase
     cred.user.getIdToken()
         //save the token to the session storage
-      .then(token => sessionStorage.setItem('token',token));
+      .then(token => sessionStorage.setItem('token',token))
+      .catch(err => console.error('Log in Broke', err));
   });
 };
 

@@ -49,7 +49,7 @@ namespace Creature_and_Canvas.Data
                                ,[EmailAddress]
                                ,[MailingAddress]
                                ,[IsDeleted])
-                        Output inserted.id
+                        Output inserted.CustomerID
                         VALUES
                                (@firstName,@lastName,@emailAddress,@mailingAddress,@isDeleted)";
 
