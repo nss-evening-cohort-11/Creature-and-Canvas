@@ -23,7 +23,7 @@ class Shop extends React.Component {
     });
 
     return (
-      <div className='Shop mt-3 justify-content-center'>
+      <div className='Shop mt-3 mx-auto'>
         <h1 className='shop mb-5'>Shop</h1>
         <div className='btnContainer'>
           <Link to='/animals'>
