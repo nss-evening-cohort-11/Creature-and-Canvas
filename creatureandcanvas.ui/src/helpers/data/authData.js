@@ -52,6 +52,12 @@ const loginUser = (user) => {
   });
 };
 
+const getUserInfo = (customerId) => new Promise((resolve, reject) => {
+    axios.get(`${baseUrl}/customers/${customerId}`)
+        .then(response => resolve(response.data))
+        .catch(err => reject(err));
+});
+
 const logoutUser = () => {
   return firebase.auth().signOut();
 };
@@ -60,4 +66,17 @@ const getUid = () => {
   return firebase.auth().currentUser.uid;
 };
 
-export default {getUid, loginUser, logoutUser, registerUser};
+const getCustomers = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/customers`)
+      .then(response => resolve(response.data))
+      .catch(err => reject(err));
+});
+
+export default {
+  getUid, 
+  loginUser, 
+  logoutUser, 
+  registerUser,
+  getUserInfo,
+  getCustomers
+};

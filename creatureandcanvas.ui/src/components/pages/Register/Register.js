@@ -15,12 +15,23 @@ class Register extends React.Component {
     },
   };
 
+  getId = (user) => new Promise((resolve, reject) => {
+    authRequests.getCustomers()
+      .then(response => {
+        console.log(response, 'getId response')
+        const customer = response.filter(x => x.emailAddress === user.email)
+        console.log(customer, 'customer')
+        resolve(customer)
+      })
+      .catch(err => reject(err))
+  })
+
   registerClickEvent = (e) => {
     const { user } = this.state;
     e.preventDefault();
     authRequests.registerUser(user)
-      .then(() => {
-        this.props.history.push('/animals');
+      .then(results => {
+       console.log(results, 'register results')
       })
       .catch(error => {
         console.error('there was an error in registering', error);

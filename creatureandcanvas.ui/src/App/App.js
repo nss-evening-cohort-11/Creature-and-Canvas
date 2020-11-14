@@ -16,7 +16,8 @@ import Animals from '../components/pages/Animals/Animals';
 import AnimalsPaintings from '../components/pages/AnimalPaintings/AnimalPaintings'
 import SinglePaintings from '../components/pages/SinglePaintings/SinglePaintings';
 import OurFooter from '../components/shared/OurFooter/OurFooter';
-import Register from '../components/pages/Register/Register'
+import Register from '../components/pages/Register/Register';
+import UserProfile from '../components/pages/UserProfile/UserProfile';
 
 fbConnection();
 
@@ -59,6 +60,7 @@ class App extends React.Component {
                   <Route path='/register' exact component={Register}/>
                   <Route path='/shop' exact component={Shop}/>
                   <Route path='/shop/:animalId' exact component={Shop}/>
+                  <Route path='/customers/:customerId' exact component={UserProfile}/>
                   <Route path='/shop/search/:keyword' exact component={ShopSearch}/>
                   <Route path='/home' exact component={Home}/>
                   <Route path='/animals' exact component={Animals}/>
