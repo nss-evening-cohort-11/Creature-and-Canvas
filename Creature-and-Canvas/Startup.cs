@@ -33,6 +33,9 @@ namespace Creature_and_Canvas
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddTransient<PaintingRepository>();
             services.AddTransient<CustomerRepository>();
+            services.AddTransient<OrderRepository>();
+
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
