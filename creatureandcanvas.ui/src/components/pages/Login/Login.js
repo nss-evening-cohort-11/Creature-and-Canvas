@@ -19,8 +19,9 @@ class Login extends React.Component {
       .then(() => {
         this.props.history.push('/animals');
       })
-      .catch(error => {
-        console.error('there was an error in registering', error);
+      .catch(()=> {
+        window.alert('You are not logged in')
+        this.props.history.push('/register')
       });
   };
 
@@ -107,7 +108,7 @@ class Login extends React.Component {
                 <button
                   type="submit"
                   className="btn btn-default col-xs-12"
-                  onClick={this.loginClickEvent}
+                  onClick={this.logOutClickEvent}
                 >
                   LogOUT
                 </button>
