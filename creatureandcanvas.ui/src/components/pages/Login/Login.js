@@ -20,7 +20,8 @@ class Login extends React.Component {
         this.props.history.push('/animals');
       })
       .catch(error => {
-        console.error('there was an error in registering', error);
+        console.error('You are not logged in', error)
+        this.props.history.push('/register')
       });
   };
 
