@@ -2,6 +2,7 @@ import React from 'react';
 import './OrderHistory.scss';
 import { Link } from 'react-router-dom';
 import OrdersTable from '../../shared/OrdersTable/OrdersTable';
+import ordersData from '../../../helpers/data/ordersData';
 
 class OrderHistory extends React.Component {
   state = {
@@ -9,6 +10,9 @@ class OrderHistory extends React.Component {
   };
 
   componentDidMount() {
+      const customerId = this.props.match.params;
+      ordersData.getOrdersByCustomerId(customerId)
+      .then(resp => console.log('here:', resp))
 // order data get all orders isCompleted and not isDeleted
   }
 

@@ -9,8 +9,8 @@ class OrdersTable extends React.Component {
 
     return (
       <div className='OrdersTable mb-5'>
-        <table class="table">
-  <thead class="thead-dark">
+        <table className="table">
+  <thead className="thead-dark">
     <tr>
       <th scope="col">Order Date</th>
       <th scope="col">Total</th>

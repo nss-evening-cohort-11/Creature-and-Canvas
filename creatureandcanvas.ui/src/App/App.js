@@ -65,7 +65,7 @@ class App extends React.Component {
                   <Route path='/animals' exact component={Animals}/>
                   <Route path='/animals/paintings/:animalId' exact component={AnimalsPaintings}/>
                   <Route path='/paintings/:itemId' exact component={SinglePaintings}/>
-                  <Route path='/orders' exact component={OrderHistory}/>
+                  <Route path='/orders/history/:customerId' exact component={OrderHistory}/>
                   <Redirect from='*' to='/home' />
                 </Switch>
               </div>
