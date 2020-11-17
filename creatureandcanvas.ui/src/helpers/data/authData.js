@@ -59,6 +59,7 @@ const getUserInfo = (customerId) => new Promise((resolve, reject) => {
 });
 
 const logoutUser = () => {
+  sessionStorage.removeItem('token');
   return firebase.auth().signOut();
 };
 
