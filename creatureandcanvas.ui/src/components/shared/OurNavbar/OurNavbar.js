@@ -17,7 +17,7 @@ class OurNavbar extends React.Component {
     const keywordLink = `/shop/search/${searchKeywordValue}`;
     return (
       <div className='OurNavbar'>
-        <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
+        <nav className='navbar navbar-expand-md navbar-dark bg-dark fixed-top'>
           <Link className='navbar-brand' to='/home'>
             Creature & Canvas
           </Link>
