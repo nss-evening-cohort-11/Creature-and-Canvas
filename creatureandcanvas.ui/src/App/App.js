@@ -29,43 +29,43 @@ fbConnection();
 // };
 
 class App extends React.Component {
-  // state = {authed: false,}
+  state = { authed: false }
 
-  // componentDidMount() {
-  //   this.removeListener = firebase.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       this.setState({ authed: true });
-  //     } else {
-  //       this.setState({ authed: false });
-  //     }
-  //   });
-  // }
+  componentDidMount() {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ authed: true });
+      } else {
+        this.setState({ authed: false });
+      }
+    });
+  }
 
-  // componentWillUnmount() {
-  //   this.removeListener();
-  // }
+  componentWillUnmount() {
+    this.removeListener();
+  }
 
   render() {
-    //const { authed } = this.state;
+    const { authed } = this.state;
 
     return (
       <div className='App'>
         <BrowserRouter>
           <React.Fragment>
-            <OurNavbar/>
+            <OurNavbar authed={authed}/>
             <div className='container d-flex justify-content-center'>
               <div className='row w-100'>
                 <Switch>
-                  <Route path='/login' component={Login}/>
-                  <Route path='/register' exact component={Register}/>
-                  <Route path='/shop' exact component={Shop}/>
-                  <Route path='/shop/:animalId' exact component={Shop}/>
-                  <Route path='/customers/:customerId' exact component={UserProfile}/>
-                  <Route path='/shop/search/:keyword' exact component={ShopSearch}/>
-                  <Route path='/home' exact component={Home}/>
-                  <Route path='/animals' exact component={Animals}/>
-                  <Route path='/animals/paintings/:animalId' exact component={AnimalsPaintings}/>
-                  <Route path='/paintings/:itemId' exact component={SinglePaintings}/>
+                  <Route path='/login' component={Login} authed={authed}/>
+                  <Route path='/register' exact component={Register} authed={authed}/>
+                  <Route path='/shop' exact component={Shop} authed={authed}/>
+                  <Route path='/shop/:animalId' exact component={Shop} authed={authed}/>
+                  <Route path='/customers/:customerId' exact component={UserProfile} authed={authed}/>
+                  <Route path='/shop/search/:keyword' exact component={ShopSearch} authed={authed}/>
+                  <Route path='/home' exact component={Home} authed={authed}/>
+                  <Route path='/animals' exact component={Animals} authed={authed}/>
+                  <Route path='/animals/paintings/:animalId' exact component={AnimalsPaintings} authed={authed}/>
+                  <Route path='/paintings/:itemId' exact component={SinglePaintings} authed={authed}/>
                   <Redirect from='*' to='/home' />
                 </Switch>
               </div>
