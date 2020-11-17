@@ -16,8 +16,10 @@ import Animals from '../components/pages/Animals/Animals';
 import AnimalsPaintings from '../components/pages/AnimalPaintings/AnimalPaintings'
 import SinglePaintings from '../components/pages/SinglePaintings/SinglePaintings';
 import OurFooter from '../components/shared/OurFooter/OurFooter';
-import Register from '../components/pages/Register/Register'
+import Register from '../components/pages/Register/Register';
+import UserProfile from '../components/pages/UserProfile/UserProfile';
 import OrderHistory from '../components/pages/OrderHistory/OrderHistory';
+
 
 fbConnection();
 
@@ -29,30 +31,30 @@ fbConnection();
 // };
 
 class App extends React.Component {
-  // state = {authed: false,}
+  state = { authed: false }
 
-  // componentDidMount() {
-  //   this.removeListener = firebase.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       this.setState({ authed: true });
-  //     } else {
-  //       this.setState({ authed: false });
-  //     }
-  //   });
-  // }
+  componentDidMount() {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ authed: true });
+      } else {
+        this.setState({ authed: false });
+      }
+    });
+  }
 
-  // componentWillUnmount() {
-  //   this.removeListener();
-  // }
+  componentWillUnmount() {
+    this.removeListener();
+  }
 
   render() {
-    //const { authed } = this.state;
+    const { authed } = this.state;
 
     return (
       <div className='App'>
         <BrowserRouter>
           <React.Fragment>
-            <OurNavbar/>
+            <OurNavbar authed={authed}/>
             <div className='container d-flex justify-content-center'>
               <div className='row w-100'>
                 <Switch>

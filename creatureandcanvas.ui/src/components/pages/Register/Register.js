@@ -12,19 +12,16 @@ class Register extends React.Component {
       lastName: '',
       mailingAddress: '',
       isDeleted: false
-    },
+    }
   };
 
   registerClickEvent = (e) => {
     const { user } = this.state;
     e.preventDefault();
     authRequests.registerUser(user)
-      .then(() => {
-        this.props.history.push('/animals');
-      })
-      .catch(error => {
-        console.error('there was an error in registering', error);
-      });
+      .then(() => this.props.history.push('/login'))
+      .catch((err) => console.error('cant register', err))
+    
   };
 
   emailChange = e => {
