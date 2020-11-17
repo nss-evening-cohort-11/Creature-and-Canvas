@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class OurNavbar extends React.Component {
   state = {
     searchValue: '',
+
   }
 
   setSearchValue = (e) => {
@@ -13,11 +14,76 @@ class OurNavbar extends React.Component {
   }
 
   render() {
+    const { authed } = this.props;
     const searchKeywordValue = this.state.searchValue;
     const keywordLink = `/shop/search/${searchKeywordValue}`;
+
+    const authedNavBar = () => {
+      if (authed) {
+        return (
+          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+            <ul className='navbar-nav ml-auto'>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/home'>
+                  Home
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/customers/1'>
+                  Profile
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/login'>
+                  Logout
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/animals'>
+                  Animals
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/shop'>
+                  Shop
+                </Link>
+              </li>
+            </ul>
+            </div>
+          );
+        } else if (!authed) {
+          return (
+          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+            <ul className='navbar-nav ml-auto'>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/home'>
+                 Home
+               </Link>
+             </li>
+             <li className='nav-item'>
+              <Link className='nav-link' to='/login'>
+                Login
+              </Link>
+             </li>
+             <li className='nav-item'>
+              <Link className='nav-link' to='/animals'>
+                Animals
+              </Link>
+             </li>
+             <li className='nav-item'>
+              <Link className='nav-link' to='/shop'>
+                Shop
+              </Link>
+             </li>
+            </ul>
+            </div>
+          );
+        }
+    }
+
     return (
       <div className='OurNavbar'>
-        <nav className='navbar navbar-expand-md navbar-dark bg-dark fixed-top'>
+        <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
           <Link className='navbar-brand' to='/home'>
             Creature & Canvas
           </Link>
@@ -32,30 +98,7 @@ class OurNavbar extends React.Component {
           >
             <span className='navbar-toggler-icon'></span>
           </button>
-          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul className='navbar-nav ml-auto'>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/home'>
-                  Home
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/login'>
-                  Login/Sign-Up
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/animals'>
-                  Animals
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/shop'>
-                  Shop
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {authedNavBar()}
           <form className="form-inline my-2 my-lg-0">
             <input onChange={this.setSearchValue} className="form-control mr-sm-2" type="text" placeholder="Search Products" aria-label="Search"/>
             <Link to={keywordLink} searchvalue={this.state.searchValue} className="btn btn-outline-success my-2 my-sm-0">
