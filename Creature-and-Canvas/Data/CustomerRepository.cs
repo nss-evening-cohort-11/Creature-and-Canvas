@@ -48,16 +48,18 @@ namespace Creature_and_Canvas.Data
                                ,[LastName]
                                ,[EmailAddress]
                                ,[MailingAddress]
+                               ,[AccountCreated]
                                ,[IsDeleted])
                         Output inserted.CustomerID
                         VALUES
-                               (@firstName,@lastName,@emailAddress,@mailingAddress,@isDeleted)";
+                               (@firstName,@lastName,@emailAddress,@mailingAddress,GETDATE(),@isDeleted)";
 
             using var db = new SqlConnection(_connectionString);
 
             var newId = db.ExecuteScalar<int>(sql, customerToAdd);
 
             customerToAdd.CustomerID = newId;
+
         }
 
 

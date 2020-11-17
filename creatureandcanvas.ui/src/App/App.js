@@ -18,6 +18,8 @@ import SinglePaintings from '../components/pages/SinglePaintings/SinglePaintings
 import OurFooter from '../components/shared/OurFooter/OurFooter';
 import Register from '../components/pages/Register/Register';
 import UserProfile from '../components/pages/UserProfile/UserProfile';
+import OrderHistory from '../components/pages/OrderHistory/OrderHistory';
+
 
 fbConnection();
 
@@ -66,6 +68,7 @@ class App extends React.Component {
                   <Route path='/animals' exact component={Animals} authed={authed}/>
                   <Route path='/animals/paintings/:animalId' exact component={AnimalsPaintings} authed={authed}/>
                   <Route path='/paintings/:itemId' exact component={SinglePaintings} authed={authed}/>
+                  <Route path='/orders' exact component={OrderHistory} authed={authed}/>
                   <Redirect from='*' to='/home' />
                 </Switch>
               </div>
