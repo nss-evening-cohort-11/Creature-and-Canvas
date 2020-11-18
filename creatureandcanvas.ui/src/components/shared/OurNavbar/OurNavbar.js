@@ -30,9 +30,8 @@ class OurNavbar extends React.Component {
         const email = firebase.auth().currentUser.email;
         authData.getCustomers()
           .then(response => response.filter(x => x.emailAddress === email))
-          .then(user => { 
-            this.setState({id: user[0].customerID})
-          })
+          .then(user => this.setState({id: user[0].customerID}))
+          .catch(err => console.error('Could not filter customers', err))
       }
     }) 
   }
