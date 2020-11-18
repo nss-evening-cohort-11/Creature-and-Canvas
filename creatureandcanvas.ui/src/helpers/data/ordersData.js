@@ -9,8 +9,7 @@ const getAllOrders = () => new Promise((resolve,reject) => {
 
 const getOrdersByCustomerId = (customerId) => new Promise((resolve,reject) => {
     axios.get(`${baseUrl}/orders/history/${customerId}`)
-        .then(response => console.error("order resp", response.data))
-            // resolve(response.data))
+        .then(response => resolve(response.data))
         .catch(error => reject(error));
 });
 
