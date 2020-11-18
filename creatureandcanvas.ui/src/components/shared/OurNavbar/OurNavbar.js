@@ -93,7 +93,7 @@ class OurNavbar extends React.Component {
 
     return (
       <div className='OurNavbar'>
-        <Navbar color='dark' dark expand='md'>
+        <Navbar color='dark' dark expand='md' fixed='top'>
           <NavbarBrand href='/home'>Creature & Canvas</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
