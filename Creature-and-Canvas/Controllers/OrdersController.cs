@@ -38,7 +38,7 @@ namespace Creature_and_Canvas.Controllers
             return Ok(order);
         }
 
-        [HttpGet("history/{customerId}")]
+        [HttpGet("history/{custId}")]
         public IActionResult GetOrdersByCustomerId(int custId)
         {
             var orders = _repo.GetOrdersByCustomerId(custId);

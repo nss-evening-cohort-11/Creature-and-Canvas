@@ -9,12 +9,17 @@ class OrderHistory extends React.Component {
     orders: [],
   };
 
-  componentDidMount() {
-      const customerId = this.props.match.params;
-      ordersData.getOrdersByCustomerId(customerId)
-      .then(resp => console.log('here:', resp))
+  grabIdThenGetOrders = () => {
+    const customerId = this.props.customerId.customerId;
+    ordersData.getOrdersByCustomerId(customerId)
+    .then(orders => console.error('grab orders by ID:', orders))
+    //  this.setState({ orders })
 // order data get all orders isCompleted and not isDeleted
   }
+
+  componentDidMount() {
+    this.grabIdThenGetOrders();
+;  }
 
   render() {
     const { orders } = this.state;
