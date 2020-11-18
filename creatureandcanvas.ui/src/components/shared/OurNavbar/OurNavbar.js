@@ -1,6 +1,8 @@
 import React from 'react';
 import './OurNavbar.scss';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 class OurNavbar extends React.Component {
   state = {
@@ -11,6 +13,11 @@ class OurNavbar extends React.Component {
   setSearchValue = (e) => {
     e.preventDefault();
     this.setState({searchValue: e.target.value})
+  }
+
+  logOut = (e) => {
+    e.preventDefault();
+    firebase.auth().signOut();
   }
 
   render() {
@@ -34,7 +41,7 @@ class OurNavbar extends React.Component {
                 </Link>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link' to='/login'>
+                <Link className='nav-link' onClick={this.logOut}>
                   Logout
                 </Link>
               </li>
@@ -82,7 +89,7 @@ class OurNavbar extends React.Component {
     }
     
     return (
-      <div className='OurNavbar'>
+      <div className='OurNavbar mx-auto'>
         <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
           <Link className='navbar-brand' to='/home'>
             Creature & Canvas

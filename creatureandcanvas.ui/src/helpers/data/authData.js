@@ -27,7 +27,8 @@ const registerUser = (user) => {
       FirstName: user.firstName,
       LastName: user.lastName,
       MailingAddress: user.mailingAddress,
-      IsDeleted: user.isDeleted
+      IsDeleted: user.isDeleted,
+      firebaseUID: cred.user.firebaseUID
     };
 
     //get token from firebase
