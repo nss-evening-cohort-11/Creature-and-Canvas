@@ -19,9 +19,9 @@ class OurNavbar extends React.Component {
   logOut = (e) => {
     e.preventDefault();
     firebase.auth().signOut()
-    // .then(this.props.history.push('/home'))
-    // .catch(err => console.log('unable to log out', err))
-    
+      .then(() => this.props.history.push('/home'))
+      .catch((err) => console.error(err))
+
   }
 
   componentDidMount() {
@@ -35,6 +35,10 @@ class OurNavbar extends React.Component {
           })
       }
     }) 
+  }
+
+  componentWillUnmount() {
+    this.removeListener();
   }
 
   render() {
