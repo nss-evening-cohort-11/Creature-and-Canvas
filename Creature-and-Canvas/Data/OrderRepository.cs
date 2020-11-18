@@ -41,5 +41,18 @@ namespace Creature_and_Canvas.Data
 
             return order;
         }
+
+        public List<Order> GetOrdersByCustomerId(int custId)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var parameters = new { cid = custId };
+
+            var orders = db.Query<Order>("select * from Orders" +
+                                         " where CustomerID = @cid" +
+                                         " and isDeleted = 0", parameters);
+
+            return orders.ToList();
+        }
     }
 }

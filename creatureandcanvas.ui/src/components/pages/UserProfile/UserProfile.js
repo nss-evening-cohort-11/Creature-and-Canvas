@@ -1,6 +1,8 @@
 import React from 'react';
 import './UserProfile.scss';
 import authData from '../../../helpers/data/authData';
+import OrderHistory from '../OrderHistory/OrderHistory';
+
 
 
 class UserProfile extends React.Component {
@@ -26,6 +28,7 @@ class UserProfile extends React.Component {
             <p className="card-text">Mailing Address {customer.mailingAddress}</p>
           </div>
         </div>
+        <OrderHistory customerId={this.props.match.params} customer={this.state.customer}/>
       </div>
     );
   }
