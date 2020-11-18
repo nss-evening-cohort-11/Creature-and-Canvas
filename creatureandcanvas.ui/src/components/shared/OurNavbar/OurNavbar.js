@@ -1,11 +1,14 @@
 import React from 'react';
 import './OurNavbar.scss';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import authData from '../../../helpers/data/authData';
 
 class OurNavbar extends React.Component {
   state = {
     searchValue: '',
-
+    id: '',
   }
 
   setSearchValue = (e) => {
@@ -13,10 +16,35 @@ class OurNavbar extends React.Component {
     this.setState({searchValue: e.target.value})
   }
 
+  logOut = (e) => {
+    e.preventDefault();
+    firebase.auth().signOut()
+      .then(() => this.props.history.push('/home'))
+      .catch((err) => console.error(err))
+
+  }
+
+  componentDidMount() {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const email = firebase.auth().currentUser.email;
+        authData.getCustomers()
+          .then(response => response.filter(x => x.emailAddress === email))
+          .then(user => this.setState({id: user[0].customerID}))
+          .catch(err => console.error('Could not filter customers', err))
+      }
+    }) 
+  }
+
+  componentWillUnmount() {
+    this.removeListener();
+  }
+
   render() {
     const { authed } = this.props;
     const searchKeywordValue = this.state.searchValue;
     const keywordLink = `/shop/search/${searchKeywordValue}`;
+
     
     const authedNavBar = () => {
       if (authed) {
@@ -29,12 +57,12 @@ class OurNavbar extends React.Component {
                 </Link>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link' to='/customers/1'>
+                <Link className='nav-link' to={`/customers/${this.state.id}`} >
                   Profile
                 </Link>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link' to='/login'>
+                <Link className='nav-link' onClick={this.logOut}>
                   Logout
                 </Link>
               </li>
@@ -82,7 +110,7 @@ class OurNavbar extends React.Component {
     }
     
     return (
-      <div className='OurNavbar'>
+      <div className='OurNavbar mx-auto'>
         <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
           <Link className='navbar-brand' to='/home'>
             Creature & Canvas
