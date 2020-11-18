@@ -57,65 +57,59 @@ class Login extends React.Component {
 
     return (
       <div className='Login w-100'>
-        <div id='login-form'>
-          <h1 className='text-center'>Login</h1>
-          <form className='form-horizontal col-sm-6 col-sm-offset-3 mx-auto'>
-            <div className='form-group'>
-              <label htmlFor='inputEmail' className='col-sm-4 control-label'>
-                Email:
-              </label>
-              <div className='col-sm-8'>
-                <input
-                  type='email'
-                  className='form-control offset-3'
-                  id='inputEmail'
-                  placeholder='Email'
-                  value={user.email}
-                  onChange={this.emailChange}
-                />
-              </div>
+        <h1 className='text-center'>Login</h1>
+        <form className='form-horizontal col-sm-6 mx-auto'>
+          <div className='form-group justify-content-center'>
+            <label htmlFor='inputEmail' className='col-sm-4 control-label'>
+              Email:
+            </label>
+            <input
+              type='email'
+              className='form-control'
+              id='inputEmail'
+              placeholder='Email'
+              value={user.email}
+              onChange={this.emailChange}
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='inputPassword' className='col-sm-4 control-label'>
+              Password:
+            </label>
+            <input
+              type='password'
+              className='form-control'
+              id='inputPassword'
+              placeholder='Password'
+              value={user.password}
+              onChange={this.passwordChange}
+            />
+          </div>
+          <div className='form-group'>
+            <div className='col-sm-12 text-center'>
+              <Link to='/register'>Need to Register?</Link>
             </div>
-            <div className='form-group'>
-              <label htmlFor='inputPassword' className='col-sm-4 control-label'>
-                Password:
-              </label>
-              <div className='col-sm-8'>
-                <input
-                  type='password'
-                  className='form-control offset-3'
-                  id='inputPassword'
-                  placeholder='Password'
-                  value={user.password}
-                  onChange={this.passwordChange}
-                />
-              </div>
-            </div>
-            <div className='form-group'>
-              <div className='col-sm-12 text-center'>
-                <Link to='/register'>Need to Register?</Link>
-              </div>
-            </div>
-            <div className='form-group'>
-              <div className='col-sm-12'>
-                <button
-                  type='submit'
-                  className='btn btn-default col-xs-12'
-                  onClick={this.loginClickEvent}
-                >
-                  Login
-                </button>
+          </div>
+          <div className='form-group'>
+            <div className='col-sm-12'>
+              <button
+                type='submit'
+                className='btn btn-default col-xs-12'
+                onClick={this.loginClickEvent}
+              >
+                Login
+              </button>
 
-                <button
-                  type='submit'
-                  className='btn btn-default col-xs-12'
-                  onClick={this.logOutClickEvent}
-                >
-                  LogOUT
-                </button>
-              </div>
+              <button
+                type='submit'
+                className='btn btn-default col-xs-12'
+                onClick={this.logOutClickEvent}
+              >
+                LogOUT
+              </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     );
   }
