@@ -3,11 +3,12 @@ import './OurNavbar.scss';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import authData from '../../../helpers/data/authData';
 
 class OurNavbar extends React.Component {
   state = {
     searchValue: '',
-
+    id: '',
   }
 
   setSearchValue = (e) => {
@@ -17,13 +18,30 @@ class OurNavbar extends React.Component {
 
   logOut = (e) => {
     e.preventDefault();
-    firebase.auth().signOut();
+    firebase.auth().signOut()
+    // .then(this.props.history.push('/home'))
+    // .catch(err => console.log('unable to log out', err))
+    
+  }
+
+  componentDidMount() {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const email = firebase.auth().currentUser.email;
+        authData.getCustomers()
+          .then(response => response.filter(x => x.emailAddress === email))
+          .then(user => { 
+            this.setState({id: user[0].customerID})
+          })
+      }
+    }) 
   }
 
   render() {
     const { authed } = this.props;
     const searchKeywordValue = this.state.searchValue;
     const keywordLink = `/shop/search/${searchKeywordValue}`;
+
     
     const authedNavBar = () => {
       if (authed) {
@@ -36,7 +54,7 @@ class OurNavbar extends React.Component {
                 </Link>
               </li>
               <li className='nav-item'>
-                <Link className='nav-link' to='/customers/1'>
+                <Link className='nav-link' to={`/customers/${this.state.id}`} >
                   Profile
                 </Link>
               </li>

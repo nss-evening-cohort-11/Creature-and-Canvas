@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import axios from 'axios';
 import {baseUrl} from '../constants.json';
+import { Redirect } from 'react-router-dom';
 
 // interceptors work by changing the outbound request before the xhr is sent 
 // or by changing the response before it's returned to our .then() method.
@@ -28,7 +29,6 @@ const registerUser = (user) => {
       LastName: user.lastName,
       MailingAddress: user.mailingAddress,
       IsDeleted: user.isDeleted,
-      firebaseUID: cred.user.firebaseUID
     };
 
     //get token from firebase
