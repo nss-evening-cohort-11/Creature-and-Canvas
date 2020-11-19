@@ -3,6 +3,7 @@ import './OurNavbar.scss';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   Collapse,
+  Button,
   Navbar,
   NavbarToggler,
   NavbarBrand,
@@ -33,7 +34,8 @@ class OurNavbar extends React.Component {
   logOut = (e) => {
     e.preventDefault();
     firebase.auth().signOut()
-      
+      .then(() => this.props.history.push('/home'))
+      .catch(err => console.log('cannot log out', err))
 
   }
 
@@ -64,18 +66,13 @@ class OurNavbar extends React.Component {
         return (
           <Nav className='ml-auto' navbar>
             <NavItem>
-              <NavLink tag={RRNavLink} className='nav-link' to='/home'>
+              <NavLink tag={RRNavLink} className='nav-link text-center' to='/home'>
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink tag={RRNavLink} className='nav-link' to={`/customers/${this.state.id}`}>
                 Profile
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={RRNavLink} className='nav-link' to='/home'>
-                Logout
               </NavLink>
             </NavItem>
             <NavItem>
@@ -88,6 +85,11 @@ class OurNavbar extends React.Component {
                 Shop
               </NavLink>
             </NavItem>
+            <NavItem>
+              <Button className="btn btn-danger  my-2 my-sm-0" onClick={this.logOut}>
+                Logout
+             </Button>
+            </NavItem> 
           </Nav>
         );
       } else if (!authed) {
