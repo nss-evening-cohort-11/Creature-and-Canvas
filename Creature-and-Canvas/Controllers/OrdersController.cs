@@ -14,9 +14,9 @@ namespace Creature_and_Canvas.Controllers
     {
         OrderRepository _repo;
 
-        public OrdersController()
+        public OrdersController(OrderRepository repo)
         {
-            _repo = new OrderRepository();
+            _repo = repo;
         }
 
         [HttpGet]
@@ -36,6 +36,16 @@ namespace Creature_and_Canvas.Controllers
             if (order == null) return NotFound("No order with that Id was found");
 
             return Ok(order);
+        }
+
+        [HttpGet("history/{custId}")]
+        public IActionResult GetOrdersByCustomerId(int custId)
+        {
+            var orders = _repo.GetOrdersByCustomerId(custId);
+
+            if (orders == null) return NotFound("No orders found for this customer");
+
+            return Ok(orders);
         }
     }
 }

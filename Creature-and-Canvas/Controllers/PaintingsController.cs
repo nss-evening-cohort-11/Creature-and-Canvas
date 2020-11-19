@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Creature_and_Canvas.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,11 @@ namespace Creature_and_Canvas.Controllers
     [ApiController]
     public class PaintingsController : ControllerBase
     {
+        public abstract class FirebaseEnabledController : ControllerBase
+        {
+            protected string UserId => User.FindFirst(x => x.Type == "user_id").Value;
+        }
+
         PaintingRepository _repo;
 
         public PaintingsController()

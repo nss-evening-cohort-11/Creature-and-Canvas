@@ -42,7 +42,8 @@ namespace Creature_and_Canvas.Data
         {
             using var db = new SqlConnection(_connectionString);
 
-            var allAnimals = db.Query<AnimalPaintingCount>(@"select Animals.AnimalId as [AnimalId], Animals.AnimalName as [AnimalName], count(Paintings.ItemID) as [PaintingsCount]
+            var allAnimals = db.Query<AnimalPaintingCount>(@"select Animals.AnimalId as [AnimalId], 
+                                                            Animals.AnimalName as [AnimalName], count(Paintings.ItemID) as [PaintingsCount]
                                                             from Animals
                                                             join Paintings
                                                             on Animals.AnimalID = Paintings.AnimalID
@@ -51,7 +52,7 @@ namespace Creature_and_Canvas.Data
             foreach(var item in allAnimals.ToList())
             {
 
-                var query = @"select top(3) Paintings.Title
+                var query = @"select top(3) Paintings.Title, Paintings.ItemID
                                from Paintings
                                where Paintings.AnimalID = @aid";
 

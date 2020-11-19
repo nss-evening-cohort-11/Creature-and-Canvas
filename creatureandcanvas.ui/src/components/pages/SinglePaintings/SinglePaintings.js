@@ -1,11 +1,10 @@
 import React from 'react';
-import './Paintings.scss';
-import { Link } from 'react-router-dom';
-import paintingData from '../../../helpers/data/paintingsData';
+import './SinglePaintings.scss';
+import paintingData from '../../../helpers/data/paintingsData'
+import {Link} from 'react-router-dom'
 
 
-
-class Paintings extends React.Component {
+class SinglePaintings extends React.Component {
   state = {
     painting: {},
   }
@@ -21,10 +20,12 @@ class Paintings extends React.Component {
     const { painting } = this.state;
     const animalPaintingLink = `/animals/paintings/${painting.animalId}`
     return (
-      <div className="SinglePaintingView">
+      <div className="SinglePaintingView mx-auto">
         <div className="card w-100 mb-5">
           <div className="card-body">
             <h5 className="card-title">{painting.title}</h5>
+            <p className="card-text">Price: ${painting.price}</p>
+            <p className="card-text">Size: {painting.canvasSize}</p>
             <p className="card-text">{painting.paintingDescription}</p>
             <img src={painting.imageURL} alt="" className="card-img-bottom"/>
             <p className="intro">See all paintings by</p>
@@ -37,4 +38,4 @@ class Paintings extends React.Component {
   }
 }
 
-export default Paintings;
+export default SinglePaintings;

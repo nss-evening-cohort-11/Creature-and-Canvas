@@ -1,2 +1,12 @@
-{"baseUrl" : "http://localhost:50225/api"
+{
+    "baseUrl" : "http://localhost:50225/api",
+    "firebaseConfig" : {
+        "apiKey": "AIzaSyD3ThlAuRxvRW0Pjaf9xfR1hE64aSnRC_c",
+        "authDomain": "creature-and-canvas.firebaseapp.com",
+        "databaseURL": "https://creature-and-canvas.firebaseio.com",
+        "projectId": "creature-and-canvas",
+        "storageBucket": "creature-and-canvas.appspot.com",
+        "messagingSenderId": "293809040135",
+        "appId": "1:293809040135:web:54bacdd0012259229373a2"
+      }
 }

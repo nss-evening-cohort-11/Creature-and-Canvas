@@ -5,14 +5,18 @@ using System.Threading.Tasks;
 using Creature_and_Canvas.Models;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace Creature_and_Canvas.Data
 {
     public class OrderRepository
     {
-        static List<Order> _orders = new List<Order>();
+        readonly string _connectionString;
 
-        const string _connectionString = "Server=localhost;Database=Creature_and_Canvas;Trusted_Connection=True;";
+        public OrderRepository(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("Creature_and_Canvas");
+        }
 
         public List<Order> GetOrders()
         {
@@ -36,6 +40,19 @@ namespace Creature_and_Canvas.Data
             var order = db.QueryFirstOrDefault<Order>(query, parameters);
 
             return order;
+        }
+
+        public List<Order> GetOrdersByCustomerId(int custId)
+        {
+            using var db = new SqlConnection(_connectionString);
+
+            var parameters = new { cid = custId };
+
+            var orders = db.Query<Order>("select * from Orders" +
+                                         " where CustomerID = @cid" +
+                                         " and isDeleted = 0", parameters);
+
+            return orders.ToList();
         }
     }
 }
