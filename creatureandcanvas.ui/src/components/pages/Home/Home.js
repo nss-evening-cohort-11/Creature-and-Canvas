@@ -28,7 +28,7 @@ class Home extends React.Component {
         </div>
         <h1>Welcome to Creature & Canvas</h1>
         <div className="blurb-container d-flex text-center">
-          <h4 className="d-flex text-left mx-auto">
+          <h4 className="d-flex text-left ">
             Founded in 1973, Creature and Canvas has dedicated the last fourty years to showing the world that beautiful art is not a human-only phenomena.
             We believe that all creatures possess the need to create, and our job is to facilitate that need (as well as make a little som'n som'n on the side, we got rent to pay too.)
           </h4>

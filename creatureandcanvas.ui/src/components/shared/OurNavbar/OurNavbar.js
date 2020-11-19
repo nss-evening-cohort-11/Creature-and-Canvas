@@ -34,9 +34,6 @@ class OurNavbar extends React.Component {
   logOut = (e) => {
     e.preventDefault();
     firebase.auth().signOut()
-      .then(() => this.props.history.push('/home'))
-      .catch(err => console.log('cannot log out', err))
-
   }
 
   componentDidMount() {
@@ -89,7 +86,7 @@ class OurNavbar extends React.Component {
               <Button className="btn btn-danger  my-2 my-sm-0" onClick={this.logOut}>
                 Logout
              </Button>
-            </NavItem> 
+            </NavItem>
           </Nav>
         );
       } else if (!authed) {
