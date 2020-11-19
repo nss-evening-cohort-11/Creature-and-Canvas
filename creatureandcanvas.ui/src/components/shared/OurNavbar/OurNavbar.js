@@ -10,11 +10,15 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import authData from '../../../helpers/data/authData';
 
 class OurNavbar extends React.Component {
   state = {
     searchValue: '',
     isOpen: false,
+    id: '',
   };
 
   setSearchValue = (e) => {
@@ -26,13 +30,36 @@ class OurNavbar extends React.Component {
     this.setState({ isOpen: !this.state.isOpen });
   }
 
+  logOut = (e) => {
+    e.preventDefault();
+    firebase.auth().signOut()
+      
+
+  }
+
+  componentDidMount() {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const email = firebase.auth().currentUser.email;
+        authData.getCustomers()
+          .then(response => response.filter(x => x.emailAddress === email))
+          .then(user => this.setState({id: user[0].customerID}))
+          .catch(err => console.error('Could not filter customers', err))
+      }
+    })
+  }
+
+  componentWillUnmount() {
+    this.removeListener();
+  }
+
   render() {
     const { isOpen } = this.state;
+    const { authed } = this.props;
     const searchKeywordValue = this.state.searchValue;
     const keywordLink = `/shop/search/${searchKeywordValue}`;
 
     const authedNavBar = () => {
-      const { authed } = this.props;
       if (authed) {
         return (
           <Nav className='ml-auto' navbar>
@@ -42,12 +69,12 @@ class OurNavbar extends React.Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={RRNavLink} className='nav-link' to='/customers/1'>
+              <NavLink tag={RRNavLink} className='nav-link' to={`/customers/${this.state.id}`}>
                 Profile
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={RRNavLink} className='nav-link' to='/login'>
+              <NavLink tag={RRNavLink} className='nav-link' to='/home'>
                 Logout
               </NavLink>
             </NavItem>
