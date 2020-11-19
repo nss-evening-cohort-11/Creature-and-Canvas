@@ -1,6 +1,16 @@
 import React from 'react';
 import './OurNavbar.scss';
-import { Link } from 'react-router-dom';
+import { NavLink as RRNavLink } from 'react-router-dom';
+import {
+  Collapse,
+  Button,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import authData from '../../../helpers/data/authData';
@@ -8,20 +18,22 @@ import authData from '../../../helpers/data/authData';
 class OurNavbar extends React.Component {
   state = {
     searchValue: '',
+    isOpen: false,
     id: '',
-  }
+  };
 
   setSearchValue = (e) => {
     e.preventDefault();
-    this.setState({searchValue: e.target.value})
+    this.setState({ searchValue: e.target.value });
+  };
+
+  toggle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
   }
 
   logOut = (e) => {
     e.preventDefault();
     firebase.auth().signOut()
-      .then(() => this.props.history.push('/home'))
-      .catch((err) => console.error(err))
-
   }
 
   componentDidMount() {
@@ -33,7 +45,7 @@ class OurNavbar extends React.Component {
           .then(user => this.setState({id: user[0].customerID}))
           .catch(err => console.error('Could not filter customers', err))
       }
-    }) 
+    })
   }
 
   componentWillUnmount() {
@@ -41,99 +53,94 @@ class OurNavbar extends React.Component {
   }
 
   render() {
+    const { isOpen } = this.state;
     const { authed } = this.props;
     const searchKeywordValue = this.state.searchValue;
     const keywordLink = `/shop/search/${searchKeywordValue}`;
 
-    
     const authedNavBar = () => {
       if (authed) {
         return (
-          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul className='navbar-nav ml-auto'>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/home'>
-                  Home
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link className='nav-link' to={`/customers/${this.state.id}`} >
-                  Profile
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link className='nav-link' onClick={this.logOut}>
-                  Logout
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/animals'>
-                  Animals
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/shop'>
-                  Shop
-                </Link>
-              </li>
-            </ul>
-            </div>
-          ); 
-        } else if (!authed) {
-          return (
-          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul className='navbar-nav ml-auto'>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/home'>
-                 Home
-               </Link>
-             </li>
-             <li className='nav-item'>
-              <Link className='nav-link' to='/login'>
-                Login
-              </Link>
-             </li>
-             <li className='nav-item'>
-              <Link className='nav-link' to='/animals'>
+          <Nav className='ml-auto' navbar>
+            <NavItem>
+              <NavLink tag={RRNavLink} className='nav-link text-center' to='/home'>
+                Home
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RRNavLink} className='nav-link' to={`/customers/${this.state.id}`}>
+                Profile
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RRNavLink} className='nav-link' to='/animals'>
                 Animals
-              </Link>
-             </li>
-             <li className='nav-item'>
-              <Link className='nav-link' to='/shop'>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RRNavLink} className='nav-link' to='/shop'>
                 Shop
-              </Link>
-             </li>
-            </ul>
-            </div>
-          );
-        } 
-    }
-    
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <Button className="btn btn-danger  my-2 my-sm-0" onClick={this.logOut}>
+                Logout
+             </Button>
+            </NavItem>
+          </Nav>
+        );
+      } else if (!authed) {
+        return (
+          <Nav className='ml-auto' navbar>
+            <NavItem>
+              <NavLink tag={RRNavLink} className='nav-link' to='/home'>
+                Home
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RRNavLink} className='nav-link' to='/login'>
+                Login
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RRNavLink} className='nav-link' to='/animals'>
+                Animals
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RRNavLink} className='nav-link' to='/shop'>
+                Shop
+              </NavLink>
+            </NavItem>
+          </Nav>
+        );
+      }
+    };
+
     return (
-      <div className='OurNavbar mx-auto'>
-        <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
-          <Link className='navbar-brand' to='/home'>
-            Creature & Canvas
-          </Link>
-          <button
-            className='navbar-toggler'
-            type='button'
-            data-toggle='collapse'
-            data-target='#navbarSupportedContent'
-            aria-controls='navbarSupportedContent'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-          >
-            <span className='navbar-toggler-icon'></span>
-          </button>
-          {authedNavBar()}
-          <form className="form-inline my-2 my-lg-0">
-            <input onChange={this.setSearchValue} className="form-control mr-sm-2" type="text" placeholder="Search Products" aria-label="Search"/>
-            <Link to={keywordLink} searchvalue={this.state.searchValue} className="btn btn-outline-success my-2 my-sm-0">
-            Go
-            </Link>
-          </form>
-        </nav>
+      <div className='OurNavbar'>
+        <Navbar color='dark' dark expand='md' fixed='top'>
+          <NavbarBrand href='/home'>Creature & Canvas</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={isOpen} navbar>
+            {authedNavBar()}
+            <form className='form-inline my-2 my-lg-0'>
+              <input
+                onChange={this.setSearchValue}
+                className='form-control mr-sm-2'
+                type='text'
+                placeholder='Search Products'
+                aria-label='Search' />
+              <NavLink
+                tag={RRNavLink}
+                to={keywordLink}
+                searchvalue={this.state.searchValue}
+                className='btn btn-outline-success my-2 my-sm-0'>
+                Go
+              </NavLink>
+            </form>
+          </Collapse>
+        </Navbar>
       </div>
     );
   }

@@ -19,9 +19,9 @@ class Login extends React.Component {
       .then(() => {
         this.props.history.push('/animals');
       })
-      .catch(()=> {
-        window.alert('You are not logged in')
-        this.props.history.push('/register')
+      .catch(() => {
+        window.alert('You are not logged in');
+        this.props.history.push('/register');
       });
   };
 
@@ -29,22 +29,22 @@ class Login extends React.Component {
     const { user } = this.state;
     e.preventDefault();
     authRequests
-    .logoutUser(user)
+      .logoutUser(user)
       .then(() => {
         this.props.history.push('/animals');
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('could not log you out', error);
       });
   };
 
-  emailChange = e => {
+  emailChange = (e) => {
     const tempUser = { ...this.state.user };
     tempUser.email = e.target.value;
     this.setState({ user: tempUser });
   };
 
-  passwordChange = e => {
+  passwordChange = (e) => {
     const tempUser = { ...this.state.user };
     tempUser.password = e.target.value;
     this.setState({ user: tempUser });
@@ -52,70 +52,64 @@ class Login extends React.Component {
 
   // register = (email, password) => authRequests.registerUser(email, password)
 
-  render () {
+  render() {
     const { user } = this.state;
-    
-    return (
-      <div className="Login w-100">
-        <div id="login-form">
-          <h1 className="text-center">Login</h1>
-          <form className="form-horizontal col-sm-6 col-sm-offset-3 mx-auto">
-            <div className="form-group">
-              <label htmlFor="inputEmail" className="col-sm-4 control-label">
-                Email:
-              </label>
-              <div className="col-sm-8">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="inputEmail"
-                  placeholder="Email"
-                  value={user.email}
-                  onChange={this.emailChange}
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputPassword" className="col-sm-4 control-label">
-                Password:
-              </label>
-              <div className="col-sm-8">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="inputPassword"
-                  placeholder="Password"
-                  value={user.password}
-                  onChange={this.passwordChange}
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="col-sm-12 text-center">
-                <Link to='/register'>Need to Register?</Link>
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="col-sm-12">
-                <button
-                  type="submit"
-                  className="btn btn-default col-xs-12"
-                  onClick={this.loginClickEvent}
-                >
-                  Login
-                </button>
 
-                <button
-                  type="submit"
-                  className="btn btn-default col-xs-12"
-                  onClick={this.logOutClickEvent}
-                >
-                  LogOUT
-                </button>
-              </div>
+    return (
+      <div className='Login w-100'>
+        <h1 className='text-center'>Login</h1>
+        <form className='form-horizontal col-sm-6 mx-auto'>
+          <div className='form-group justify-content-center'>
+            <label htmlFor='inputEmail' className='col-sm-4 control-label'>
+              Email:
+            </label>
+            <input
+              type='email'
+              className='form-control'
+              id='inputEmail'
+              placeholder='Email'
+              value={user.email}
+              onChange={this.emailChange}
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='inputPassword' className='col-sm-4 control-label'>
+              Password:
+            </label>
+            <input
+              type='password'
+              className='form-control'
+              id='inputPassword'
+              placeholder='Password'
+              value={user.password}
+              onChange={this.passwordChange}
+            />
+          </div>
+          <div className='form-group'>
+            <div className='col-sm-12 text-center'>
+              <Link to='/register'>Need to Register?</Link>
             </div>
-          </form>
-        </div>
+          </div>
+          <div className='form-group'>
+            <div className='col-sm-12'>
+              <button
+                type='submit'
+                className='btn btn-default col-xs-12'
+                onClick={this.loginClickEvent}
+              >
+                Login
+              </button>
+
+              <button
+                type='submit'
+                className='btn btn-default col-xs-12'
+                onClick={this.logOutClickEvent}
+              >
+                LogOUT
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     );
   }
