@@ -13,6 +13,7 @@ import Shop from '../components/pages/Shop/Shop';
 import ShopSearch from '../components/pages/ShopSearch/ShopSearch';
 import Home from '../components/pages/Home/Home';
 import Animals from '../components/pages/Animals/Animals';
+import ShoppingCart from '../components/pages/ShoppingCart/ShoppingCart';
 import AnimalsPaintings from '../components/pages/AnimalPaintings/AnimalPaintings';
 import SinglePaintings from '../components/pages/SinglePaintings/SinglePaintings';
 import OurFooter from '../components/shared/OurFooter/OurFooter';
@@ -105,6 +106,12 @@ class App extends React.Component {
                   path='/orders'
                   exact
                   component={OrderHistory}
+                  authed={authed}
+                />
+                 <Route
+                  path='/shopping-cart'
+                  exact
+                  component={ShoppingCart}
                   authed={authed}
                 />
                 <Redirect from='*' to='/home' />

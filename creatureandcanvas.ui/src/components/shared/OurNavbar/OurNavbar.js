@@ -83,6 +83,11 @@ class OurNavbar extends React.Component {
               </NavLink>
             </NavItem>
             <NavItem>
+              <NavLink tag={RRNavLink} className='nav-link' to='/shopping-cart'>
+                Shopping Cart
+              </NavLink>
+            </NavItem>
+            <NavItem>
               <Button className="btn btn-danger  my-2 my-sm-0" onClick={this.logOut}>
                 Logout
              </Button>
