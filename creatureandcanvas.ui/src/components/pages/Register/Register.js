@@ -18,9 +18,14 @@ class Register extends React.Component {
   registerClickEvent = (e) => {
     const { user } = this.state;
     e.preventDefault();
-    authRequests.registerUser(user)
+    if(user.email !== '') {
+      authRequests.registerUser(user)
       .then(() => this.props.history.push('/login'))
       .catch((err) => console.error('cant register', err))
+    } else {
+      window.alert('You have to use an email!')
+    }
+    
     
   };
 
@@ -59,7 +64,7 @@ class Register extends React.Component {
     const { user } = this.state;
     
     return (
-      <div className="register w-100">
+      <div className="register w-100" style={{margin: '5rem'}}>
         <div id="register-form">
           <h1 className="text-center">Register</h1>
           <form className="form-horizontal col-sm-6 col-sm-offset-3 mx-auto">
