@@ -9,15 +9,23 @@ class OrdersTable extends React.Component {
     const dateProp = order.orderDate;
     const shortDate = dateProp.substring(0, 10);
 
-    return (
-    <>
-    <tr>
-      <td>{shortDate}</td>
-      <td>total</td>
-      <Link to={`/orders/${order.orderID}`}>View Order</Link>
-    </tr>
-    </>
-    );
+    if (order) {
+      return (
+        <>
+        <tr>
+          <td>{shortDate}</td>
+          <td>total</td>
+          <Link to={`/orders/${order.orderID}`}>View Order</Link>
+        </tr>
+        </>
+        );
+    } else {
+      return (
+        <h4>You have no orders.</h4>
+      )
+    }
+
+    
   }
 }
 
