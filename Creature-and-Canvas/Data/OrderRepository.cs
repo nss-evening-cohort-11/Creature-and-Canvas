@@ -50,6 +50,7 @@ namespace Creature_and_Canvas.Data
 
             var orders = db.Query<Order>("select * from Orders" +
                                          " where CustomerID = @cid" +
+                                         " and isCompleted = 1" +
                                          " and isDeleted = 0", parameters);
 
             return orders.ToList();
