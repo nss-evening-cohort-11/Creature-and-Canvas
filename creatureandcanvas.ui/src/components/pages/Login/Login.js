@@ -57,10 +57,10 @@ class Login extends React.Component {
 
     return (
       <div className='Login w-100'>
-        <h1 className='text-center'>Login</h1>
+        <h1 className='heading text-center'>Login</h1>
         <form className='form-horizontal col-sm-6 mx-auto'>
           <div className='form-group justify-content-center'>
-            <label htmlFor='inputEmail' className='col-sm-4 control-label'>
+            <label htmlFor='inputEmail' className='col-sm-4 subheading control-label'>
               Email:
             </label>
             <input
@@ -73,7 +73,7 @@ class Login extends React.Component {
             />
           </div>
           <div className='form-group'>
-            <label htmlFor='inputPassword' className='col-sm-4 control-label'>
+            <label htmlFor='inputPassword' className='col-sm-4 subheading control-label'>
               Password:
             </label>
             <input
@@ -94,18 +94,10 @@ class Login extends React.Component {
             <div className='col-sm-12'>
               <button
                 type='submit'
-                className='btn btn-default col-xs-12'
+                className='btn btn-default view col-xs-12'
                 onClick={this.loginClickEvent}
               >
                 Login
-              </button>
-
-              <button
-                type='submit'
-                className='btn btn-default col-xs-12'
-                onClick={this.logOutClickEvent}
-              >
-                LogOUT
               </button>
             </div>
           </div>

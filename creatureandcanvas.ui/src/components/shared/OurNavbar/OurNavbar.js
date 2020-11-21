@@ -88,7 +88,7 @@ class OurNavbar extends React.Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <Button className="btn btn-danger  my-2 my-sm-0" onClick={this.logOut}>
+              <Button className="btn btn-light my-2 my-sm-0" onClick={this.logOut}>
                 Logout
              </Button>
             </NavItem>
@@ -124,7 +124,7 @@ class OurNavbar extends React.Component {
 
     return (
       <div className='OurNavbar'>
-        <Navbar color='dark' dark expand='md' fixed='top'>
+        <Navbar style={{backgroundColor: '#CA2E55'}} dark expand='md' fixed='top'>
           <NavbarBrand href='/home'>Creature & Canvas</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
@@ -140,7 +140,8 @@ class OurNavbar extends React.Component {
                 tag={RRNavLink}
                 to={keywordLink}
                 searchvalue={this.state.searchValue}
-                className='btn btn-outline-success my-2 my-sm-0'>
+                className='btn my-2 my-sm-0'
+                style={{backgroundColor: '#FFB7C3'}}>
                 Go
               </NavLink>
             </form>

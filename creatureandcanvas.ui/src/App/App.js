@@ -20,6 +20,7 @@ import OurFooter from '../components/shared/OurFooter/OurFooter';
 import Register from '../components/pages/Register/Register';
 import UserProfile from '../components/pages/UserProfile/UserProfile';
 import OrderHistory from '../components/pages/OrderHistory/OrderHistory';
+import OrderDetails from '../components/pages/OrderDetails/OrderDetails';
 
 fbConnection();
 
@@ -34,6 +35,7 @@ class App extends React.Component {
   state = { authed: false };
 
   componentDidMount() {
+    document.body.style.backgroundColor = "#FFDD99"
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ authed: true });
@@ -41,6 +43,7 @@ class App extends React.Component {
         this.setState({ authed: false });
       }
     });
+
   }
 
   componentWillUnmount() {
@@ -108,7 +111,13 @@ class App extends React.Component {
                   component={OrderHistory}
                   authed={authed}
                 />
-                 <Route
+                <Route
+                  path='/orderDetails/:customerId'
+                  exact
+                  component={OrderDetails}
+                  authed={authed}
+                />
+                <Route
                   path='/shopping-cart'
                   exact
                   component={ShoppingCart}
