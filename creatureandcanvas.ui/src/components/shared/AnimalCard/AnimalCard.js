@@ -21,8 +21,11 @@ class AnimalCard extends React.Component {
               <div className="card-body">
                 <p className="bio">{animal.bio}</p>
                 <div className="btnContainer text-center">
-                    <Link className="btn"
-                    style={{backgroundColor: '#FFB7C3', borderRadius: '.75rem'}} 
+                    <Link className="view btn"
+                    style={{backgroundColor: '#FFB7C3', 
+                            borderRadius: '.75rem',
+                            borderRadius: '.75rem', 
+                            borderColor: '#FFADBB'}} 
                     to={singleAnimalLink}>View</Link>
                 </div>
               </div>

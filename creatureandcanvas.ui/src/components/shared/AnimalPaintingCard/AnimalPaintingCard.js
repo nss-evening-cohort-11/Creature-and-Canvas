@@ -8,7 +8,7 @@ class AnimalPaintingCard extends React.Component {
        <div className='SingleAnimalPaintingCard'>
         <div className='row my-4'>
           <div className='col-sm d-flex'>
-            <div className='card m-3'>
+            <div className='card m-3'  style={{backgroundColor: '#99E6FF', borderRadius: '1.5rem'}}>
               <div className='card-title'>
                 <h5 className="title mt-3">{painting.title}</h5>
               </div>

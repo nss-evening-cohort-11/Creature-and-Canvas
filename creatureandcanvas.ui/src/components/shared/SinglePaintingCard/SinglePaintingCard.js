@@ -10,7 +10,7 @@ class SinglePaintingCard extends React.Component {
       <div className="SinglePainting">
         <div className="row my-4">
           <div className="col-sm d-flex">
-            <div className="card m-3">
+            <div className="card m-3" style={{backgroundColor: '#FFC857', borderRadius: '1.5rem'}}>
               <div className="card-title">
                 <h5 className="title mt-3">{painting.title}</h5>
               </div>
@@ -19,7 +19,15 @@ class SinglePaintingCard extends React.Component {
                   <p>Size: {painting.canvasSize}</p>
                   <p>Price: ${painting.price}</p>
                   <div className="btnContainer justify-content-center">
-                    <Link className="view btn btn-secondary" to={singleLink}>View</Link>
+                    <Link 
+                    className="view btn" 
+                    to={singleLink}
+                    style={{
+                          backgroundColor: '#FFB7C3', 
+                          borderRadius: '.75rem', 
+                          borderColor: '#FFADBB'
+                          }}
+                    >View</Link>
                   </div>
                 </div>
             </div>

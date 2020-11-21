@@ -11,6 +11,11 @@
   object-fit: cover;
 }
 
+.view:hover {
+  background-color: 'black';
+  box-shadow: 0 0 11px 
+}
+
 @media only screen and (min-width: 410px) {
   /* For mobile phones: */
   .btnContainer {
