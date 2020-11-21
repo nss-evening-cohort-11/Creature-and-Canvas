@@ -23,7 +23,7 @@ class Animals extends React.Component {
 
     return (
       <div className='Animals'>
-        <h1>Animals</h1>
+        <h1 className='heading'>Animals</h1>
           <div className="d-flex flex-wrap justify-content-center">
             {buildAnimalsList}
           </div>
