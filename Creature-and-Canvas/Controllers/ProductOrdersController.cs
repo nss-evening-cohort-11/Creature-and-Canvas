@@ -36,5 +36,15 @@ namespace Creature_and_Canvas.Controllers
 
             return Ok(productOrder);
         }
+
+        [HttpGet("details/{custId}")]
+        public IActionResult GetOrderDetailsByCustomerId(int custId)
+        {
+            var orderDetails = _repo.GetOrderDetailsByCustomerId(custId);
+
+            if (orderDetails == null) return NotFound("No productOrder with that customerId was found");
+
+            return Ok(orderDetails);
+        }
     }
 }

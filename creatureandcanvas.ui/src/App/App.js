@@ -19,6 +19,7 @@ import OurFooter from '../components/shared/OurFooter/OurFooter';
 import Register from '../components/pages/Register/Register';
 import UserProfile from '../components/pages/UserProfile/UserProfile';
 import OrderHistory from '../components/pages/OrderHistory/OrderHistory';
+import OrderDetails from '../components/pages/OrderDetails/OrderDetails';
 
 fbConnection();
 
@@ -105,6 +106,12 @@ class App extends React.Component {
                   path='/orders'
                   exact
                   component={OrderHistory}
+                  authed={authed}
+                />
+                <Route
+                  path='/orderDetails/:customerId'
+                  exact
+                  component={OrderDetails}
                   authed={authed}
                 />
                 <Redirect from='*' to='/home' />
