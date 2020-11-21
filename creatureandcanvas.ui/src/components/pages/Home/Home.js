@@ -24,11 +24,11 @@ class Home extends React.Component {
     return (
       <div className="Home">
         <div className="img-container d-flex flex-wrap justify-content-center">
-          <img className="logo img-fluid text-center rounded mx-auto" src="https://i.ibb.co/gwfF0Lx/CC-logo2.png" alt=""/>
+          <img className="logo img-fluid text-center rounded mx-auto" src="https://i.ibb.co/dWJNX19/CC-logo3.png" alt=""/>
         </div>
-        <h1>Welcome to Creature & Canvas</h1>
+        <h1 className='heading' >Welcome to Creature & Canvas</h1>
         <div className="blurb-container d-flex text-center">
-          <h4 className="d-flex text-left ">
+          <h4 className="d-flex text-left subheading">
             Founded in 1973, Creature and Canvas has dedicated the last fourty years to showing the world that beautiful art is not a human-only phenomena.
             We believe that all creatures possess the need to create, and our job is to facilitate that need (as well as make a little som'n som'n on the side, we got rent to pay too.)
           </h4>

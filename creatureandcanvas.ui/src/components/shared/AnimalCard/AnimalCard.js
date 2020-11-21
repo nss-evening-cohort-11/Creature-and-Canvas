@@ -15,7 +15,7 @@ class AnimalCard extends React.Component {
                  style={{backgroundColor: '#99E6FF', borderRadius: '1.5rem'}} 
                  id={animal.animalID}>
               <div className='card-title'>
-                <h5 className="title mt-3">{animal.animalName}</h5>
+                <h5 className="title mt-3 heading">{animal.animalName}</h5>
               </div>
               <img src={animal.imageUrl} className="card-img-top" alt="animal pic"/>
               <div className="card-body">
@@ -25,7 +25,7 @@ class AnimalCard extends React.Component {
                     style={{backgroundColor: '#FFB7C3', 
                             borderRadius: '.75rem',
                             borderRadius: '.75rem', 
-                            borderColor: '#FFADBB'}} 
+                            color: '#FFF'}} 
                     to={singleAnimalLink}>View</Link>
                 </div>
               </div>

@@ -4,8 +4,9 @@ import './OurFooter.scss';
 class OurFooter extends React.Component {
   render() {
     return (
-      <nav className="navbar bottom navbar-success bg-dark fixed-bottom">
-          <a className="navbar-brand text-center mx-auto" href="#">@2020 Creature & Canvas</a>
+      <nav style={{backgroundColor: '#CA2E55', color: '#fff'}}
+           className="navbar bottom fixed-bottom">
+          <i className="navbar-brand text-center mx-auto">@2020 Creature & Canvas</i>
       </nav>
     );
   }

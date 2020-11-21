@@ -22,7 +22,7 @@ class SinglePaintings extends React.Component {
     return (
       <div className="SinglePaintingView mx-auto">
         <div className="card w-100 mb-5" 
-             style={{backgroundColor: '#B284EB',
+             style={{backgroundColor: '#99E6FF',
                      borderRadius: '1.5rem'}}>
           <div className="card-body">
             <h5 className="card-title">{painting.title}</h5>
@@ -35,8 +35,7 @@ class SinglePaintings extends React.Component {
             <button className="view btn" 
             style={{backgroundColor: '#FFB7C3', 
             borderRadius: '.75rem',
-            borderRadius: '.75rem', 
-            borderColor: '#FFADBB'}} 
+            color: '#FFF'}} 
             onClick={() => console.log("Id: " + painting.itemId)}>Buy Immediately</button>
           </div>
         </div>

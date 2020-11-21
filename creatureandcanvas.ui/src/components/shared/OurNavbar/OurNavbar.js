@@ -88,7 +88,7 @@ class OurNavbar extends React.Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <Button className="btn btn-danger  my-2 my-sm-0" onClick={this.logOut}>
+              <Button className="btn btn-light my-2 my-sm-0" onClick={this.logOut}>
                 Logout
              </Button>
             </NavItem>
