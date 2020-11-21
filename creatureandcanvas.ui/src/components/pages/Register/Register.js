@@ -147,7 +147,7 @@ class Register extends React.Component {
               <div className="col-sm-12">
                 <button
                   type="submit"
-                  className="btn btn-default col-xs-12"
+                  className="btn view col-xs-12"
                   onClick={this.registerClickEvent}
                 >
                   Register
