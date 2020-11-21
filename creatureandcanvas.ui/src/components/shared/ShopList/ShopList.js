@@ -9,18 +9,19 @@ class ShopList extends React.Component {
     const topThree = animal.topThreePaintings;
 
     const buildAnimalList = topThree.map((aPainting) => {
-      return <Link to={`/paintings/${aPainting.itemID}`}>{aPainting.title}</Link>
+      return <Link className="list-group-item subheading"
+                   style={{backgroundColor: '#EBFAFF', borderRadius: '.75rem', margin: '.4rem'}}
+                   to={`/paintings/${aPainting.itemID}`}>{aPainting.title}</Link>
     });
 
     return (
       <div className='ShopList mb-5'>
-        <li className='list-group-item'>
+        <li className='card' style={{backgroundColor: '#99E6FF', borderRadius: '1.5rem'}}>
           <div className="d-flex">
-            <h2 className='item-name'>{animal.animalName}</h2>
-            <p className='count mr-auto mt-1'>({animal.paintingsCount})</p>
+            <h2 className='heading card-title item-name mx-auto'>{animal.animalName}</h2>
           </div>
-          <div className="text-left">
-            <ul className='list-group mt-5 mb-5'>
+          <div className="card-body">
+            <ul className='list-group list-group-flush mt-5 mb-5'>
               {buildAnimalList}
             </ul>
           </div>

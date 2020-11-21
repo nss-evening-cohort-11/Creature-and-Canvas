@@ -21,7 +21,9 @@ class SinglePaintings extends React.Component {
     const animalPaintingLink = `/animals/paintings/${painting.animalId}`
     return (
       <div className="SinglePaintingView mx-auto">
-        <div className="card w-100 mb-5">
+        <div className="card w-100 mb-5" 
+             style={{backgroundColor: '#99E6FF',
+                     borderRadius: '1.5rem'}}>
           <div className="card-body">
             <h5 className="card-title">{painting.title}</h5>
             <p className="card-text">Price: ${painting.price}</p>
@@ -30,7 +32,11 @@ class SinglePaintings extends React.Component {
             <img src={painting.imageURL} alt="" className="card-img-bottom"/>
             <p className="intro">See all paintings by</p>
             <Link to={animalPaintingLink}><h4 className="mt-3">{painting.animalName}</h4></Link>
-            <button className="btn btn-secondary" onClick={() => console.log("Id: " + painting.itemId)}>Buy Immediately</button>
+            <button className="view btn" 
+            style={{backgroundColor: '#FFB7C3', 
+            borderRadius: '.75rem',
+            color: '#FFF'}} 
+            onClick={() => console.log("Id: " + painting.itemId)}>Buy Immediately</button>
           </div>
         </div>
       </div>

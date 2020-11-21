@@ -24,13 +24,13 @@ class Shop extends React.Component {
 
     return (
       <div className='Shop mx-auto'>
-        <h1 className='shop mb-5'>Shop</h1>
+        <h1 className='shop mb-5 heading'>Shop</h1>
         <div className='btnContainer'>
           <Link to='/animals'>
-            <button className='animal btn btn-secondary mr-5'>Filter By Animal</button>
+            <button className='animal view btn mr-5'>Filter By Animal</button>
           </Link>
-          <button className='size btn btn-secondary mr-5'>Filter By Size</button>
-          <button className='price btn btn-secondary'>Sort By Price</button>
+          <button className='size btn view mr-5'>Filter By Size</button>
+          <button className='price btn view'>Sort By Price</button>
         </div>
         <div className='paintingContainer d-flex justify-content-center'>
           <ul className='list-group mt-5 mb-5'>
