@@ -11,7 +11,7 @@ class DetailsTable extends React.Component {
       <tr>
         <td>{productOrder.item}</td>
         <td>${productOrder.price}</td>
-        <Link to={`/paintings/${productOrder.itemId}`}>View Item</Link>
+        <td><Link to={`/paintings/${productOrder.itemId}`}>View Item</Link></td>
       </tr>
     </>
     );

@@ -43,7 +43,7 @@ namespace Creature_and_Canvas.Data
         {
             using var db = new SqlConnection(_connectionString);
 
-            var query = @"select O.OrderDate as [Date], (Pa.Price * Po.Quantity) as [OrderTotal], Pa.Title as [Item], Pa.Price as [Price], Pa.ItemID as [ItemID]
+            var query = @"select O.OrderID, O.OrderDate as [Date], (Pa.Price * Po.Quantity) as [OrderTotal], Pa.Title as [Item], Pa.Price as [Price], Pa.ItemID as [ItemID]
                             from Orders O
                             join ProductOrders Po on Po.OrderID = O.OrderID
                             join Customers Cu on Cu.CustomerID = O.CustomerID

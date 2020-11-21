@@ -1,6 +1,6 @@
 import React from 'react';
 import './OrdersTable.scss';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 
 class OrdersTable extends React.Component {
