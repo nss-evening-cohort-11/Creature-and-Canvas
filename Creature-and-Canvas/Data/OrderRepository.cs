@@ -5,14 +5,18 @@ using System.Threading.Tasks;
 using Creature_and_Canvas.Models;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace Creature_and_Canvas.Data
 {
     public class OrderRepository
     {
-        static List<Order> _orders = new List<Order>();
+        readonly string _connectionString;
 
-        const string _connectionString = "Server=localhost;Database=Creature_and_Canvas;Trusted_Connection=True;";
+        public OrderRepository(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("Creature_and_Canvas");
+        }
 
         public List<Order> GetOrders()
         {

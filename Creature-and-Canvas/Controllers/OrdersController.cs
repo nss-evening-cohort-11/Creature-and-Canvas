@@ -14,9 +14,9 @@ namespace Creature_and_Canvas.Controllers
     {
         OrderRepository _repo;
 
-        public OrdersController()
+        public OrdersController(OrderRepository repo)
         {
-            _repo = new OrderRepository();
+            _repo = repo;
         }
 
         [HttpGet]
