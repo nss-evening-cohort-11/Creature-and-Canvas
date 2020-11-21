@@ -5,18 +5,25 @@ import {Link} from 'react-router-dom';
 
 class OrdersTable extends React.Component {
   render() {
-    const { order } = this.props;
-    const { customerId } = this.props;
+    const { order, customerId } = this.props;
+    const dateProp = order.orderDate;
+    const shortDate = dateProp.substring(0, 10);
 
-    return (
-    <>
-    <tr>
-      <td>{order.orderDate}</td>
-      <td>total</td>
-      <td><Link to={`/orderDetails/${customerId}`}>View Order</Link></td>
-    </tr>
-    </>
-    );
+    if (order) {
+      return (
+        <>
+        <tr>
+          <td>{shortDate}</td>
+          <td>total</td>
+          <Link to={`/orderDetails/${customerId}`}>View Order</Link>
+        </tr>
+        </>
+        );
+    } else {
+      return (
+        <h4>You have no orders.</h4>
+      )
+    }
   }
 }
 
