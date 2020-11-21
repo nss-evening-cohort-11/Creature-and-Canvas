@@ -11,7 +11,9 @@ class AnimalCard extends React.Component {
       <div className='SingleAnimal'>
         <div className='row'>
           <div className='col-sm d-flex'>
-            <div className='card m-3' id={animal.animalID}>
+            <div className='card m-3' 
+                 style={{backgroundColor: '#99E6FF', borderRadius: '1.5rem'}} 
+                 id={animal.animalID}>
               <div className='card-title'>
                 <h5 className="title mt-3">{animal.animalName}</h5>
               </div>
@@ -19,7 +21,9 @@ class AnimalCard extends React.Component {
               <div className="card-body">
                 <p className="bio">{animal.bio}</p>
                 <div className="btnContainer text-center">
-                    <Link className="btn btn-secondary" to={singleAnimalLink}>View</Link>
+                    <Link className="btn"
+                    style={{backgroundColor: '#FFB7C3', borderRadius: '.75rem'}} 
+                    to={singleAnimalLink}>View</Link>
                 </div>
               </div>
             </div>
